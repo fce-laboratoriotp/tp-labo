@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolución y distribución de registros de suicidios en Argentina (2020-2024)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="modo-slides">
+
+  <!-- Barra superior de progreso -->
+  <div class="barra" id="barra"></div>
+
+  <!-- Botón flotante para alternar Modo Slides / Modo Landing -->
+  <button id="btn-modo" class="btn-modo" aria-label="Cambiar modo de visualización">
+    📄 Ver como Landing Page
+  </button>
+
+  <div class="escenario" id="escenario">
+
+    <!-- SLIDE 1: PORTADA -->
+    <section class="slide portada" data-seccion="Portada">
+      <span class="etiqueta">Trabajo Práctico · Métodos Cuantitativos</span>
+      <h1>Evolución y distribución de <span class="hl">registros de suicidios</span></h1>
+      <p class="grande">Análisis cuantitativo en la República Argentina durante el período 2020-2024 utilizando bases de datos oficiales del SNIC y microdatos.</p>
+    </section>
+
+    <!-- SLIDE 2: INTRODUCCIÓN Y PROBLEMA -->
+    <section class="slide" data-seccion="Introducción">
+      <span class="etiqueta salvia">Contexto y Problema</span>
+      <h2 class="ancho">¿Cómo evolucionó la mortalidad entre 2020 y 2024?</h2>
+      <div class="fila dos">
+        <div class="paso">
+          <p>El suicidio representa una problemática de salud pública crítica y prevenible. Analizar el quinquenio post-pandemia permite evaluar tendencias y disparidades estructurales.</p>
+          <p>Se integraron bases oficiales del <strong>SNIC</strong> y microdatos individuales que suman un total de <strong>19.323 víctimas</strong> analizadas en todo el país.</p>
+        </div>
+        <div class="tarjeta paso">
+          <h3>Pregunta Central</h3>
+          <br />
+          <p> ¿Cómo evolucionó la mortalidad por suicidio en Argentina (2020-2024), qué franjas etarias concentran mayor vulnerabilidad y cómo se comporta la brecha de género?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: METODOLOGÍA Y PROCESAMIENTO (Cada ítem aparece de a uno) -->
+    <section class="slide" data-seccion="Metodología">
+      <span class="etiqueta">Datos y Herramientas</span>
+      <h2 class="ancho">Procesamiento íntegro en Python y Colab</h2>
+      <div class="tarjeta tarjeta-metodologia">
+        <div class="item-metodo paso">
+          <div class="num">01</div>
+          <div>
+            <h3>Fuentes Oficiales</h3>
+            <p>Cruce riguroso entre <code>snic-provincias.csv</code> y la base de microdatos individuales (2020-2024) mediante <code>pd.merge()</code>.</p>
+          </div>
+        </div>
+        <div class="item-metodo paso">
+          <div class="num">02</div>
+          <div>
+            <h3>Limpieza</h3>
+            <p>Auditoría de valores nulos, confirmando que las celdas vacías correspondían a otros delitos, y estandarización categórica de edades.</p>
+          </div>
+        </div>
+        <div class="item-metodo paso">
+          <div class="num">03</div>
+          <div>
+            <h3>Modelado</h3>
+            <p>Agregaciones lógicas con <code>groupby()</code> para evaluar evolución anual, distribución etaria y ratios de género.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: GRÁFICO 1 - EVOLUCIÓN TEMPORAL -->
+    <section class="slide" data-seccion="Gráfico 1: Temporal">
+      <span class="etiqueta salvia">Gráfico I</span>
+      <h2 class="ancho">Evolución temporal de la serie (2020-2024)</h2>
+      <div class="fila grafico-texto">
+        <div class="tarjeta grafico-grande">
+          <img src="grafico1_evolucion_temporal_2020_2024.png" alt="Gráfico de Evolución Temporal">
+        </div>
+        <div class="paso texto-analisis">
+          <p> La serie muestra una subida constante: un piso de 3.262 víctimas en 2020 y un techo de 4.249 en 2024, lo que representa un <strong>incremento acumulado del 30,25%</strong> en cinco años. Esto confirma que se trata de una problemática persistente que se consolida a nivel nacional.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: GRÁFICO 2 - DISTRIBUCIÓN ETARIA -->
+    <section class="slide" data-seccion="Gráfico 2: Etario">
+      <span class="etiqueta">Gráfico II</span>
+      <h2 class="ancho">Vulnerabilidad según franja etaria</h2>
+      <div class="fila grafico-texto">
+        <div class="tarjeta grafico-grande">
+          <img src="grafico2_edad.png" alt="Gráfico por Franja Etaria">
+        </div>
+        <div class="paso texto-analisis">
+          <p> Se destaca un marcado pico de vulnerabilidad en la etapa de adultos jóvenes: la franja de <strong>15 a 34 años</strong> concentra la mayor cantidad de víctimas (superando las 2.400 en los picos de 20-29 años), evidenciando un descenso constante a medida que avanza la edad.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: GRÁFICO 3 - BRECHA DE GÉNERO -->
+    <section class="slide" data-seccion="Gráfico 3: Género">
+      <span class="etiqueta salvia">Gráfico III</span>
+      <h2 class="ancho">Evolución comparativa según género</h2>
+      <div class="fila grafico-texto">
+        <div class="tarjeta grafico-grande">
+          <img src="grafico3_sexo.png" alt="Gráfico de Brecha de Género">
+        </div>
+        <div class="paso texto-analisis">
+          <p> Se registra una contundente y persistente brecha de género. Los varones concentran cerca del <strong>79% de los casos totales</strong>, manteniendo de forma sistemática una <strong>razón aproximada de 4 a 1</strong> frente a las mujeres a lo largo de todo el quinquenio.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: GRÁFICO 4 - RIESGO PROVINCIAL -->
+    <section class="slide" data-seccion="Gráfico 4: Provincias">
+      <span class="etiqueta">Gráfico IV</span>
+      <h2 class="ancho">Riesgo relativo por jurisdicción (Tasas)</h2>
+      <div class="fila grafico-texto">
+        <div class="tarjeta grafico-grande">
+          <img src="grafico4_provincias.png" alt="Gráfico de Provincias">
+        </div>
+        <div class="paso texto-analisis">
+          <p> Buenos Aires concentra el mayor volumen absoluto de casos (&gt;5.700), pero al ajustar por población su tasa es intermedia. En contraste, provincias como <strong>Entre Ríos, Catamarca, La Rioja y Salta</strong> presentan las tasas más altas cada 100.000 habitantes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: CONCLUSIÓN Y CIERRE -->
+    <section class="slide centrada" data-seccion="Conclusiones">
+      <span class="etiqueta salvia">Conclusiones</span>
+      <h2 class="ancho">Hallazgos y desafíos sanitarios</h2>
+      <p class="grande paso">El estudio demuestra que la mortalidad por suicidio es una problemática crítica, con un aumento sostenido del 30,25% entre 2020 y 2024, fuertemente concentrada en varones jóvenes (15 a 34 años) y con heterogeneidad en las tasas provinciales.</p>
+      <p class="paso">Esto subraya la necesidad imperiosa de diseñar políticas públicas de prevención focalizadas geográficamente por tasas y orientadas a los grupos etarios de mayor vulnerabilidad detectados.</p>
+    </section>
+
+  </div>
+
+  <!-- Controles inferiores (modo diapositivas) -->
+  <div class="pie" id="pie-controles">
+    <div class="contador" id="contador">1 / 8</div>
+    <div class="controles">
+      <button id="btn-ant" aria-label="Diapositiva anterior">←</button>
+      <button id="btn-sig" aria-label="Diapositiva siguiente">→</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
