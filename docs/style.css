@@ -31,10 +31,10 @@ body {
   background: var(--superficie);
   color: var(--titulo);
   border: none;
-  padding: 0.6rem 1.2rem;
+  padding: 12px 24px;
   border-radius: 999px;
   font-family: var(--roboto);
-  font-size: 0.85rem;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -63,18 +63,18 @@ h1, h2, h3 {
   line-height: 1.15;
 }
 
-h1 { font-size: clamp(2.3rem, 4.5vw, 4.2rem); font-weight: 900; letter-spacing: -0.02em; }
-h2 { font-size: clamp(1.7rem, 3.2vw, 2.8rem); font-weight: 700; letter-spacing: -0.01em; max-width: 24ch; }
+h1 { font-size: 64px; font-weight: 900; letter-spacing: -1.3px; }
+h2 { font-size: 44px; font-weight: 700; letter-spacing: -0.4px; max-width: 720px; }
 h2.ancho { max-width: none; }
-h3 { font-size: 1.1rem; font-weight: 700; color: var(--titulo); }
+h3 { font-size: 24px; font-weight: 700; color: var(--titulo); }
 
-p { color: var(--tenue); font-size: clamp(0.95rem, 1.1vw, 1.05rem); font-weight: 400; }
-p.grande { font-size: clamp(1.1rem, 1.4vw, 1.35rem); color: var(--titulo); font-weight: 400; }
+p { color: var(--tenue); font-size: 20px; font-weight: 400; }
+p.grande { font-size: 25px; color: var(--titulo); font-weight: 400; }
 strong { color: var(--titulo); font-weight: 700; }
 
 .hl {
   background: linear-gradient(transparent 60%, var(--naranja-fondo) 60%, var(--naranja-fondo) 92%, transparent 92%);
-  padding: 0 0.1em;
+  padding: 0 2px;
   color: var(--titulo);
 }
 
@@ -83,11 +83,11 @@ strong { color: var(--titulo); font-weight: 700; }
   align-self: flex-start;
   background: var(--naranja);
   color: #FFFFFF;
-  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: 18px;
+  letter-spacing: 1.4px;
   text-transform: uppercase;
-  padding: 0.4em 1.1em;
+  padding: 10px 20px;
   border-radius: 999px;
 }
 
@@ -98,22 +98,22 @@ strong { color: var(--titulo); font-weight: 700; }
 
 code {
   background: #F1F5F9;
-  padding: 0.15em 0.4em;
+  padding: 3px 7px;
   border-radius: 4px;
   font-family: monospace;
-  font-size: 0.9em;
+  font-size: 18px;
   color: #1E293B;
 }
 
 /* Grillas y Tarjetas (Sin bordes, con sombra sutil) */
-.fila { display: grid; gap: 2rem; align-items: center; }
+.fila { display: grid; gap: 32px; align-items: center; }
 .dos { grid-template-columns: 1.2fr 1fr; }
 
 .tarjeta {
   background: var(--superficie);
   border: none;
   border-radius: 16px;
-  padding: 1.6rem;
+  padding: 28px;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
 }
 
@@ -121,15 +121,15 @@ code {
 .tarjeta.tarjeta-metodologia {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  padding: 1.8rem 2.2rem;
+  gap: 20px;
+  padding: 30px 36px;
 }
 
 .item-metodo {
   display: flex;
   align-items: flex-start;
-  gap: 1.2rem;
-  padding-bottom: 1rem;
+  gap: 20px;
+  padding-bottom: 18px;
   border-bottom: 1px solid var(--borde);
 }
 
@@ -139,7 +139,7 @@ code {
 }
 
 .item-metodo .num {
-  font-size: 1.4rem;
+  font-size: 28px;
   font-weight: 900;
   color: var(--naranja);
   line-height: 1;
@@ -147,8 +147,8 @@ code {
 
 /* GRILLA ESPECIAL: Gráfico Gigante a la Izquierda, Texto a la Derecha */
 .fila.grafico-texto {
-  grid-template-columns: 1.5fr 1fr;
-  gap: 2.5rem;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 36px;
   align-items: center;
 }
 
@@ -156,7 +156,7 @@ code {
   background: var(--superficie);
   border: none;
   border-radius: 20px;
-  padding: 1.2rem;
+  padding: 20px;
   box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.05);
 }
 
@@ -168,7 +168,7 @@ code {
 }
 
 .texto-analisis {
-  font-size: 1.05rem;
+  font-size: 20px;
 }
 
 /* Animación y pasos interactivos */
@@ -198,11 +198,11 @@ body.modo-slides .escenario {
 body.modo-slides .slide {
   position: absolute;
   inset: 0;
-  padding: 50px 90px 80px;
+  padding: 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.4rem;
+  gap: 24px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.4s ease, visibility 0.4s ease;
@@ -245,16 +245,16 @@ body.modo-slides .slide.centrada p { margin: 0 auto; }
   pointer-events: none;
 }
 
-.pie .controles { display: flex; gap: 0.6rem; pointer-events: auto; }
+.pie .controles { display: flex; gap: 10px; pointer-events: auto; }
 
 .pie button {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   cursor: pointer;
   background: var(--superficie);
   border: none;
-  font-size: 1.1rem;
+  font-size: 22px;
   color: var(--titulo);
   display: grid;
   place-items: center;
@@ -267,7 +267,7 @@ body.modo-slides .slide.centrada p { margin: 0 auto; }
   color: #FFFFFF;
 }
 
-.contador { font-size: 0.9rem; font-weight: 600; color: var(--tenue); }
+.contador { font-size: 16px; font-weight: 600; color: var(--tenue); }
 .portada { padding-right: max(16px, 500px); }
 
 /* ══ 5. MODO LANDING PAGE (Scroll Continuo por Secciones) ══ */
@@ -291,11 +291,11 @@ body.modo-landing .slide {
   inset: auto;
   width: 100%;
   min-height: 100vh;
-  padding: 100px 10%;
+  padding: 100px 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2rem;
+  gap: 32px;
   opacity: 1;
   visibility: visible;
   border-bottom: 1px solid var(--borde);
@@ -314,9 +314,20 @@ body.modo-landing .paso { opacity: 1; transform: none; }
 /* Responsivo móvil */
 @media (max-width: 850px) {
   body { overflow-y: auto; }
-  .escenario { position: static; transform: none; width: 100%; height: auto; }
-  .slide { position: relative; inset: auto; opacity: 1; visibility: visible; padding: 70px 24px; min-height: auto; }
+  body.modo-slides { height: auto; min-height: 100vh; overflow-y: auto; }
+  body.modo-slides .escenario { position: static; transform: none; width: 100%; height: auto; display: block; }
+  body.modo-slides .slide { position: relative; inset: auto; opacity: 1; visibility: visible; padding: 56px 24px; min-height: auto; height: auto; gap: 24px; overflow: visible; }
+  .slide { position: relative; inset: auto; opacity: 1; visibility: visible; padding: 56px 24px; min-height: auto; gap: 24px; }
   .fila, .dos, .fila.grafico-texto { grid-template-columns: 1fr; }
+  h1 { font-size: 42px; }
+  h2 { font-size: 34px; }
+  h3 { font-size: 21px; }
+  p { font-size: 18px; }
+  p.grande { font-size: 21px; }
+  .etiqueta { font-size: 14px; padding: 8px 14px; }
+  .tarjeta { padding: 22px; }
+  .tarjeta.tarjeta-metodologia { padding: 24px; }
+  .tarjeta.grafico-grande { padding: 14px; }
   .portada { padding-right: 24px; }
   .pie { padding: 0 24px 16px; }
 }
