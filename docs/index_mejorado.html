@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolución y distribución de registros de suicidios en Argentina (2020-2024)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<link href="mejoras.css" rel="stylesheet"/></head>
+<body class="modo-slides">
+<!-- Barra superior de progreso -->
+<div class="barra" id="barra"></div>
+<!-- Botón flotante para alternar Modo Slides / Modo Landing -->
+<button aria-label="Cambiar modo de visualización" class="btn-modo" id="btn-modo">
+    📄 Ver como Landing Page
+  </button>
+<div class="escenario" id="escenario">
+<!-- SLIDE 1: PORTADA -->
+<section class="slide portada" data-seccion="Portada">
+<span class="etiqueta">Trabajo Práctico · Métodos Cuantitativos</span>
+<h1>Evolución y distribución de <span class="hl">registros de suicidios</span></h1>
+<p class="grande">Análisis cuantitativo en la República Argentina durante el período 2020-2024 utilizando bases de datos oficiales del SNIC y microdatos.</p>
+<div class="equipo-portada"><div class="equipo-titulo">EQUIPO DE INVESTIGACIÓN</div><div class="equipo-nombres"><span>Miguelina Baldi</span><span>Micaela Cabrera</span><span>Florencia Scavone</span><span>Aldana Montenegro</span><span>Kayra Estrella</span></div></div></section>
+<!-- SLIDE 2: INTRODUCCIÓN Y PROBLEMA -->
+<section class="slide" data-seccion="Introducción">
+<span class="etiqueta salvia">Contexto y Problema</span>
+<h2 class="ancho">¿Cómo evolucionaron los suicidios registrados entre 2020 y 2024?</h2>
+<div class="context-layout">
+<div class="context-copy paso">
+<p>El suicidio representa una problemática de salud pública crítica y prevenible. Analizar el quinquenio post-pandemia permite evaluar tendencias y disparidades estructurales.</p>
+<p>Se integraron bases oficiales del <strong>SNIC</strong> y microdatos individuales que suman un total de <strong>19.323 víctimas</strong> analizadas en todo el país.</p>
+<div class="tarjeta pregunta-central paso">
+<h3>Pregunta Central</h3>
+
+<p>¿Cómo evolucionó la cantidad de suicidios registrados en Argentina entre 2020 y 2024, qué grupos de edad concentraron más casos y cómo se distribuyeron según sexo?</p>
+</div></div>
+
+<aside aria-label="Evolución anual ilustrativa de los casos registrados entre 2020 y 2024" class="context-chart paso"><div class="chart-head"><span class="chart-eyebrow">SERIE ANUAL · SNIC</span><strong>Casos registrados</strong><small>Argentina, 2020–2024</small></div><div class="bar-chart"><div class="bar-item"><span class="bar-count">3,262</span><div class="bar-track"><div class="bar-fill" style="--level:72.49%;"></div></div><span class="bar-year">2020</span></div><div class="bar-item"><span class="bar-count">3,648</span><div class="bar-track"><div class="bar-fill" style="--level:81.07%;"></div></div><span class="bar-year">2021</span></div><div class="bar-item"><span class="bar-count">3,959</span><div class="bar-track"><div class="bar-fill" style="--level:87.98%;"></div></div><span class="bar-year">2022</span></div><div class="bar-item"><span class="bar-count">4,205</span><div class="bar-track"><div class="bar-fill" style="--level:93.44%;"></div></div><span class="bar-year">2023</span></div><div class="bar-item"><span class="bar-count">4,249</span><div class="bar-track"><div class="bar-fill" style="--level:94.42%;"></div></div><span class="bar-year">2024</span></div></div><div class="chart-foot">Visualización de cantidades absolutas, no tasas.</div></aside></div>
+</section>
+<!-- SLIDE 3: METODOLOGÍA Y PROCESAMIENTO (Cada ítem aparece de a uno) -->
+<section class="slide" data-seccion="Metodología">
+<span class="etiqueta">Datos y Herramientas</span>
+<h2 class="ancho">Procesamiento íntegro en Python y Colab</h2>
+<div class="tarjeta tarjeta-metodologia">
+<div class="item-metodo paso">
+<div class="num">01</div>
+<div>
+<h3>Fuentes Oficiales</h3>
+<p>Cruce riguroso entre <code>snic-provincias.csv</code> y la base de microdatos individuales (2020-2024) mediante <code>pd.merge()</code>.</p>
+</div>
+</div>
+<div class="item-metodo paso">
+<div class="num">02</div>
+<div>
+<h3>Limpieza</h3>
+<p>Auditoría de valores nulos, confirmando que las celdas vacías correspondían a otros delitos, y estandarización categórica de edades.</p>
+</div>
+</div>
+<div class="item-metodo paso">
+<div class="num">03</div>
+<div>
+<h3>Transformaciones y resumen estadístico</h3>
+<p>Agrupaciones con groupby(), evolución interanual y comparación por edad, sexo y provincia.</p>
+</div>
+</div>
+<div class="item-metodo paso"><div class="num">04</div><div><h3>Visualización e interpretación</h3><p>Construcción de gráficos comparativos y lectura de los hallazgos, con sus limitaciones metodológicas.</p></div></div></div>
+</section>
+<!-- SLIDE 4: GRÁFICO 1 - EVOLUCIÓN TEMPORAL -->
+<section class="slide" data-seccion="Gráfico 1: Temporal">
+<span class="etiqueta salvia">Gráfico I</span>
+<h2 class="ancho">Evolución temporal de la serie (2020-2024)</h2>
+<div class="fila grafico-texto">
+<div class="tarjeta grafico-grande">
+<img alt="Gráfico de Evolución Temporal" src="grafico1_evolucion_temporal_2020_2024.png"/>
+</div>
+<div class="paso texto-analisis">
+<p> La serie muestra una subida constante: un piso de 3.262 víctimas en 2020 y un techo de 4.249 en 2024, lo que representa un <strong>incremento acumulado del 30,25%</strong> en cinco años. Esto confirma que se trata de una problemática persistente que se consolida a nivel nacional.</p>
+</div>
+</div>
+</section>
+<!-- SLIDE 5: GRÁFICO 2 - DISTRIBUCIÓN ETARIA -->
+<section class="slide" data-seccion="Gráfico 2: Etario">
+<span class="etiqueta">Gráfico II</span>
+<h2 class="ancho">Distribución de casos según grupo de edad</h2>
+<div class="fila grafico-texto">
+<div class="tarjeta grafico-grande">
+<img alt="Gráfico por Franja Etaria" src="grafico2_edad.png"/>
+</div>
+<div class="paso texto-analisis">
+<p>Los grupos jóvenes concentran una parte importante de los casos registrados. Esta distribución refleja cantidades absolutas y no permite estimar el riesgo por edad sin datos de población. El análisis gráfico excluye los casos de edad sin determinar.</p>
+</div>
+</div>
+</section>
+<!-- SLIDE 6: GRÁFICO 3 - BRECHA DE GÉNERO -->
+<section class="slide" data-seccion="Gráfico 3: Género">
+<span class="etiqueta salvia">Gráfico III</span>
+<h2 class="ancho">Distribución de casos según sexo</h2>
+<div class="fila grafico-texto">
+<div class="tarjeta grafico-grande">
+<img alt="Gráfico de Brecha de Género" src="grafico3_sexo.png"/>
+</div>
+<div class="paso texto-analisis">
+<p>En el período analizado, aproximadamente el 79% de los registros corresponde a varones y el 20% a mujeres. La comparación no representa los casos cuyo sexo figura como «Sin determinar».</p>
+</div>
+</div>
+</section>
+<!-- SLIDE 7: GRÁFICO 4 - RIESGO PROVINCIAL -->
+<section class="slide" data-seccion="Gráfico 4: Provincias">
+<span class="etiqueta">Gráfico IV</span>
+<h2 class="ancho">Comparación provincial: tasas publicadas por SNIC</h2>
+<div class="fila grafico-texto">
+<div class="tarjeta grafico-grande">
+<img alt="Gráfico de Provincias" src="grafico4_provincias.png"/>
+</div>
+<div class="paso texto-analisis">
+<p>El volumen absoluto de casos no equivale a la tasa por habitante. En esta comparación se utilizan las tasas provinciales publicadas por SNIC, no tasas recalculadas a partir de los microdatos.</p>
+</div>
+</div>
+</section>
+<!-- SLIDE 8: CONCLUSIÓN Y CIERRE -->
+<section class="slide centrada" data-seccion="Conclusiones">
+<span class="etiqueta salvia">Conclusiones</span>
+<h2 class="ancho">Hallazgos y desafíos sanitarios</h2>
+<p class="grande paso">Entre 2020 y 2024 se observó un incremento de aproximadamente el 30,3% en la cantidad de suicidios registrados. El análisis también evidencia diferencias por sexo, grupo de edad y jurisdicción.</p>
+<p class="paso">Los resultados describen patrones de los registros y ofrecen información para orientar nuevas investigaciones; no permiten identificar causas ni inferir riesgo individual a partir de cantidades absolutas.</p>
+</section>
+</div>
+<!-- Controles inferiores (modo diapositivas) -->
+<div class="pie" id="pie-controles">
+<div class="contador" id="contador">1 / 8</div>
+<div class="controles">
+<button aria-label="Diapositiva anterior" id="btn-ant">←</button>
+<button aria-label="Diapositiva siguiente" id="btn-sig">→</button>
+</div>
+</div>
+<script src="script.js"></script>
+<script defer="True" src="mejoras.js"></script></body>
+</html>
