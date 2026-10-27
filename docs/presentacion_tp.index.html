@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolución y distribución de registros de suicidios en Argentina (2020-2024)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{--navy:#18243a;--text:#4b6070;--teal:#2f9996;--orange:#e97024;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box} html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:Roboto,Arial,sans-serif;color:var(--navy);background:#fafdfd}button{font:inherit} 
+/* Animación de fondo REAL y permanente */
+body::before,body::after{content:"";position:fixed;z-index:0;pointer-events:none;border-radius:45% 55% 60% 40%;filter:blur(6px);will-change:transform;animation:flotarA 9s ease-in-out infinite alternate}
+body::before{width:52vw;height:64vh;top:-24vh;right:-11vw;background:radial-gradient(ellipse,rgba(56,171,174,.32),rgba(87,196,195,.18) 54%,transparent 75%)}
+body::after{width:47vw;height:60vh;left:-14vw;bottom:-27vh;background:radial-gradient(ellipse,rgba(246,153,94,.27),rgba(251,188,138,.13) 53%,transparent 75%);animation-name:flotarB;animation-duration:12s}
+@keyframes flotarA{from{transform:translate(-35px,0) rotate(-12deg) scale(.94)}to{transform:translate(75px,105px) rotate(15deg) scale(1.14)}}
+@keyframes flotarB{from{transform:translate(-25px,55px) rotate(12deg) scale(1)}to{transform:translate(85px,-70px) rotate(-20deg) scale(1.2)}}
+.escenario{position:relative;z-index:1;width:100%;height:100dvh}.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:clamp(10px,1.5vh,18px);padding:clamp(42px,7vh,65px) clamp(34px,8vw,115px) clamp(52px,8vh,75px);opacity:0;pointer-events:none;transform:translateY(20px);transition:opacity .62s var(--ease),transform .62s var(--ease);overflow:hidden;}
+.slide.activa{opacity:1;transform:none;pointer-events:auto}.slide>*{flex-shrink:0;min-width:0}.slide .ancho{max-width:100%}h1,h2,h3,p{margin:0}h1{font-size:clamp(36px,3.5vw,54px);line-height:1.12;letter-spacing:-.03em;max-width:1050px}h2{font-size:clamp(25px,2.5vw,38px);line-height:1.15;letter-spacing:-.025em}h3{font-size:clamp(17px,1.4vw,21px)}p{color:var(--text);font-size:clamp(16px,1.3vw,19px);line-height:1.58}p+p{margin-top:.65em}.grande{font-size:clamp(17px,1.48vw,21px);line-height:1.53;max-width:1080px}strong{color:var(--navy);font-weight:700}.hl{box-shadow:inset 0 -.16em rgba(233,112,36,.12)}
+.etiqueta{align-self:flex-start;background:var(--orange);color:white;border-radius:99px;font-size:13px;font-weight:700;padding:10px 17px;text-transform:uppercase;letter-spacing:.025em}.etiqueta.salvia{background:var(--teal)}.integrantes{margin-top:6px!important;color:#596979;font-size:14px;line-height:1.7;max-width:980px}.portada{align-items:flex-start}
+.tarjeta{border:1px solid rgba(43,137,142,.10);border-radius:19px;background:rgba(255,255,255,.87);padding:clamp(18px,2vw,28px);box-shadow:0 10px 32px rgba(31,63,73,.06)}
+.contexto-grilla{display:grid;grid-template-columns:minmax(0,1fr) minmax(350px,.92fr);align-items:center;gap:clamp(25px,4vw,58px)}.contexto-grilla p{font-size:clamp(17px,1.4vw,20px)}.pregunta-central{margin-top:8px;padding:19px 25px;background:rgba(242,250,249,.92)}.pregunta-central h3{margin-bottom:7px}.pregunta-central br{display:none}.pregunta-central p{font-size:clamp(16px,1.24vw,18px)}
+.chart-panel{background:rgba(255,255,255,.85);border:1px solid #dce9e8;border-radius:18px;padding:18px 22px 12px;box-shadow:0 16px 28px rgba(31,63,73,.06);height:290px;display:flex;flex-direction:column}.chart-titulo{font-size:16px;font-weight:700;text-align:center}.bar-chart{display:flex;align-items:flex-end;justify-content:space-around;gap:10px;flex:1;border-bottom:1px solid #c8d3d6;padding:28px 2px 0}.bar-unit{height:100%;display:flex;align-items:center;justify-content:flex-end;flex-direction:column;gap:4px;flex:1;min-width:0}.bar-unit strong{font-size:12px;font-variant-numeric:tabular-nums}.bar-unit span{font-size:12px;color:#465968;padding-top:4px}.bar{width:75%;max-width:48px;height:var(--value);max-height:160px;min-height:1px;background:linear-gradient(0deg,#258f91,#69b9b5);border-radius:6px 6px 0 0;transform:scaleY(0);transform-origin:bottom}.bar-unit:last-child .bar{background:linear-gradient(0deg,#d95817,#f69b53)}.slide.activa .bar{animation:subirBarra 2s var(--ease) var(--delay) both}@keyframes subirBarra{from{transform:scaleY(0)}to{transform:scaleY(1)}}.chart-nota{font-size:11px;color:#657582;text-align:center;margin-top:8px}
+.tarjeta-metodologia{padding:10px 26px}.item-metodo{display:grid;grid-template-columns:45px 1fr;gap:13px;padding:15px 0;align-items:center}.item-metodo+.item-metodo{border-top:1px solid #e3e9eb}.num{font-size:21px;color:var(--orange);font-weight:900}.item-metodo p{font-size:clamp(15px,1.15vw,17px);line-height:1.42;margin-top:2px}code{background:#edf1f2;color:var(--navy);border-radius:4px;padding:2px 5px}
+.grafico-texto{display:grid;grid-template-columns:minmax(0,1.48fr) minmax(275px,.85fr);gap:clamp(24px,3.7vw,55px);align-items:center}.grafico-grande{padding:12px;display:flex;align-items:center;justify-content:center}.grafico-grande img{display:block;width:100%;max-height:52vh;object-fit:contain}.texto-analisis p{font-size:clamp(16px,1.35vw,19px)}.centrada{text-align:center;align-items:center}.centrada .etiqueta{align-self:center}.centrada p{max-width:1000px}
+.barra{position:fixed;top:0;left:0;height:5px;width:12.5%;background:linear-gradient(90deg,var(--orange),var(--teal));z-index:20;transition:width .5s}.pie{position:fixed;bottom:14px;left:7%;right:7%;z-index:20;display:flex;justify-content:space-between;align-items:center}.contador{font-size:14px;font-weight:700;color:#42536b}.controles{display:flex;gap:12px}.controles button,.btn-modo{border:0;border-radius:100px;background:rgba(255,255,255,.85);padding:10px 16px;color:var(--navy);box-shadow:0 6px 20px rgba(41,70,78,.09);cursor:pointer}.controles button{font-size:23px}.btn-modo{position:fixed;z-index:22;top:18px;right:24px;font-size:13px;font-weight:700}
+body.modo-landing{overflow:auto}body.modo-landing .escenario{height:auto}body.modo-landing .slide{position:relative;opacity:1;transform:none;pointer-events:auto;min-height:95vh;height:auto}body.modo-landing .pie{display:none}
+@media(max-height:690px){.slide{padding-top:47px;padding-bottom:50px;gap:10px}h1{font-size:38px}h2{font-size:27px}.chart-panel{height:240px}.grafico-grande img{max-height:45vh}.item-metodo{padding:9px 0}}
+@media(max-width:800px){.slide{padding:68px 22px 70px;overflow-y:auto;justify-content:flex-start}.contexto-grilla,.grafico-texto{grid-template-columns:1fr}.grafico-grande img{max-height:38vh}.chart-panel{height:230px}.tarjeta-metodologia{padding:6px 16px}h1{font-size:clamp(31px,6vw,42px)}.integrantes{font-size:12px}p{font-size:15px}.pie{left:22px;right:22px}}
+@media(prefers-reduced-motion:reduce){body::before,body::after,.slide.activa .bar{animation:none!important}.slide{transition:none}}
+/* Fondo animado propio, independiente del estado de las diapositivas */
+.ambient-bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;background:linear-gradient(115deg,#fcfefe 0%,#f4fbfa 45%,#fffaf6 100%)}
+.ambient-orb{position:absolute;border-radius:50%;filter:blur(5px);will-change:transform;opacity:.85}
+.orb-one{width:45vw;height:60vw;max-height:780px;top:-22vw;right:-7vw;background:radial-gradient(circle,rgba(70,179,177,.34) 0%,rgba(70,179,177,.15) 52%,transparent 73%);animation:orbTravelOne 6s ease-in-out infinite alternate}
+.orb-two{width:48vw;height:45vw;left:-15vw;bottom:-19vw;background:radial-gradient(circle,rgba(246,149,84,.32) 0%,rgba(246,149,84,.13) 53%,transparent 74%);animation:orbTravelTwo 7.5s ease-in-out infinite alternate}
+.orb-three{width:32vw;height:32vw;right:8vw;bottom:-18vw;background:radial-gradient(circle,rgba(70,179,177,.19),transparent 70%);animation:orbTravelThree 8s linear infinite alternate}
+.ambient-ring{position:absolute;right:3vw;top:8vh;width:220px;height:220px;border-radius:45% 55% 42% 58%;border:2px solid rgba(42,158,154,.2);animation:ringRotate 13s linear infinite}
+@keyframes orbTravelOne{0%{transform:translate(-90px,-40px) scale(.82)}100%{transform:translate(120px,140px) scale(1.15)}}
+@keyframes orbTravelTwo{0%{transform:translate(-60px,80px) scale(.9)}100%{transform:translate(145px,-115px) scale(1.2)}}
+@keyframes orbTravelThree{0%{transform:translate(-70px,20px)}100%{transform:translate(90px,-110px)}}
+@keyframes ringRotate{from{transform:rotate(0deg) translateX(0)}to{transform:rotate(360deg) translateX(45px)}}
+/* Revelación progresiva de metodología con flecha derecha */
+.slide[data-seccion="Metodología"] .item-metodo{opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity .42s ease,transform .42s ease,visibility 0s .42s}
+.slide[data-seccion="Metodología"] .item-metodo.revelado{opacity:1;visibility:visible;transform:translateY(0);transition:opacity .42s ease,transform .42s ease}
+/* Cada renglón ocupa el mismo espacio, aunque aún no esté visible */
+.slide[data-seccion="Metodología"] .item-metodo:not(.revelado){pointer-events:none}
+@media(prefers-reduced-motion:reduce){.ambient-orb,.ambient-ring{animation:none!important}}
+
+/* Círculos flotantes y partículas ambientales — sin interferir con contenidos */
+.ambiente-particulas{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;isolation:isolate}
+.ambiente-particulas .orbita{position:absolute;border-radius:50%;border:2px solid rgba(19,150,153,.20);background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.15),rgba(27,167,166,.095) 60%,rgba(16,70,82,.04));animation:orbita-flota var(--dur) ease-in-out var(--delay) infinite alternate;will-change:transform;opacity:.78}
+.ambiente-particulas .orbita.rosa{border-color:rgba(237,131,163,.23);background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.14),rgba(241,154,168,.14) 65%,rgba(241,154,168,.03))}
+.ambiente-particulas .orbita.petroleo{border-color:rgba(8,61,74,.15);background:radial-gradient(circle,rgba(25,91,109,.08),transparent 76%)}
+.ambiente-particulas .punto{position:absolute;width:var(--size);height:var(--size);border-radius:50%;background:var(--tone);opacity:.56;box-shadow:0 0 11px var(--glow);animation:punto-flota var(--dur) ease-in-out var(--delay) infinite alternate;will-change:transform,opacity}
+@keyframes orbita-flota{0%{transform:translate3d(0,0,0) scale(.90) rotate(0deg)}50%{transform:translate3d(40px,-45px,0) scale(1.06) rotate(7deg)}100%{transform:translate3d(-35px,40px,0) scale(.96) rotate(-10deg)}}
+@keyframes punto-flota{0%{transform:translate3d(0,0,0);opacity:.18}40%{opacity:.67}100%{transform:translate3d(var(--dx),var(--dy),0);opacity:.36}}
+@media (prefers-reduced-motion:reduce){.ambiente-particulas .orbita,.ambiente-particulas .punto{animation:none!important}}
+
+/* Ajuste de legibilidad de los cuatro graficos: no altera datos ni animaciones */
+@media (min-width: 801px) {
+ .slide:has(.animated-chart) { padding-top: clamp(24px,4vh,38px); padding-bottom: clamp(40px,6vh,56px); gap: clamp(5px,1vh,12px); }
+ .slide:has(.animated-chart) h2 { font-size: clamp(23px,2.15vw,33px); line-height:1.12; }
+ .slide:has(.animated-chart) .grafico-texto { width:100%; grid-template-columns:minmax(0,2.15fr) minmax(220px,.73fr); gap:clamp(17px,2.3vw,33px); }
+ .slide:has(.animated-chart) .grafico-grande { padding:0; min-width:0; }
+ .slide:has(.animated-chart) .animated-chart { height:min(68vh,620px); min-height:min(68vh,620px); }
+ .slide:has(.animated-chart) .texto-analisis p { font-size:clamp(16px,1.3vw,19px); }
+ .animated-chart .tick { font-size:14px !important; }
+ .animated-chart .axis-label { font-size:15px !important; }
+ .animated-chart .point-label { font-size:15px !important; }
+ .animated-chart svg text[font-size="11"] { font-size:12.7px !important; }
+ .animated-chart svg text[font-size="10"] { font-size:12px !important; }
+}
+@media (max-height: 650px) and (min-width:801px) {
+ .slide:has(.animated-chart) .animated-chart { height:60vh; min-height:60vh; }
+ .slide:has(.animated-chart) {padding-top:25px;padding-bottom:40px;}
+}
+</style><style>
+:root{--navy:#073d4a;--text:#4b6070;--teal:#1aa5a4;--orange:#f39aa8}
+.etiqueta{background:#0b4050}.etiqueta.salvia{background:#159d9e}.hl{box-shadow:inset 0 -.15em rgba(243,154,168,.25)}
+body::before{background:radial-gradient(ellipse,rgba(24,165,164,.29),rgba(24,165,164,.12) 54%,transparent 75%)}body::after{background:radial-gradient(ellipse,rgba(243,154,168,.28),rgba(243,154,168,.11) 53%,transparent 75%)}
+.ambient-bg{background:linear-gradient(120deg,#f9fdfc,#f8fcfc 50%,#fff9fb)}.orb-one{background:radial-gradient(circle,rgba(24,165,164,.31),rgba(24,165,164,.13) 51%,transparent 74%)}.orb-two{background:radial-gradient(circle,rgba(243,154,168,.33),rgba(243,154,168,.13) 55%,transparent 74%)}.orb-three{background:radial-gradient(circle,rgba(8,61,74,.16),transparent 72%)}.ambient-ring{border-color:rgba(24,165,164,.27)}
+.num{color:#e986a0}.barra{background:linear-gradient(90deg,#18a5a4,#f39aa8)}
+.metodologia-sin-caja{display:flex;flex-direction:column;gap:10px}.metodologia-sin-caja .item-metodo{padding:12px 9px;border-bottom:1px solid rgba(7,61,74,.09);max-width:1080px}.metodologia-sin-caja .item-metodo:last-child{border:0}
+.grafico-texto{grid-template-columns:minmax(0,1.65fr) minmax(250px,.73fr);gap:clamp(20px,3vw,43px)}
+.grafico-grande{padding:6px;border:0;background:transparent;box-shadow:none}
+.animated-chart{width:100%;min-height:min(58vh,490px);height:min(58vh,490px);position:relative}
+.animated-chart svg{width:100%;height:100%;overflow:visible;display:block}
+.animated-chart text{font-family:Roboto,Arial,sans-serif;fill:#284d59}
+.animated-chart .axis{stroke:#91a5ac;stroke-width:1.2}.animated-chart .gridline{stroke:#cbd7d9;stroke-width:1;stroke-dasharray:4 4}.animated-chart .axis-label{font-size:12px;font-weight:700}.animated-chart .tick{font-size:11px}.animated-chart .point-label{font-size:12px;font-weight:700}
+.animated-chart .anim-path{stroke-dasharray:var(--length);stroke-dashoffset:var(--length)}
+.slide.activa .animated-chart.is-running .anim-path{animation:draw-path 2.5s ease-in-out forwards}
+@keyframes draw-path{to{stroke-dashoffset:0}}
+.animated-chart .anim-dot,.animated-chart .anim-value{opacity:0}
+.slide.activa .animated-chart.is-running .anim-dot,.slide.activa .animated-chart.is-running .anim-value{animation:fade-dots .22s ease-out var(--time) forwards}
+@keyframes fade-dots{to{opacity:1}}
+.animated-chart .rise-bar{transform:scaleY(0);transform-origin:center bottom}.animated-chart .grow-horizontal{transform:scaleX(0);transform-origin:left center}
+.slide.activa .animated-chart.is-running .rise-bar{animation:rise-bar .65s cubic-bezier(.17,.72,.22,1) var(--time) forwards}.slide.activa .animated-chart.is-running .grow-horizontal{animation:grow-h .65s cubic-bezier(.17,.72,.22,1) var(--time) forwards}@keyframes grow-h{to{transform:scaleX(1)}}
+@keyframes rise-bar{to{transform:scaleY(1)}}
+.pregunta-revelable{opacity:0;transform:translateY(14px);visibility:hidden;transition:opacity .42s ease,transform .42s ease,visibility 0s .42s;background:rgba(243,154,168,.07)!important;border:1.5px solid rgba(235,123,151,.85)!important;border-radius:15px;box-shadow:none!important;padding:17px 24px 18px 67px!important;position:relative}
+.pregunta-revelable:before{content:'?';position:absolute;left:19px;top:19px;width:29px;height:29px;display:grid;place-items:center;background:#0b4050;color:white;border-radius:50%;font-weight:800;font-size:21px}
+.pregunta-revelable.revelado{opacity:1;transform:none;visibility:visible;transition:opacity .42s ease,transform .42s ease}
+.contexto-grilla{grid-template-columns:minmax(0,1fr) minmax(320px,.9fr)}
+@media(max-height:720px){.animated-chart{height:50vh;min-height:50vh}.slide{gap:8px}.grafico-texto{gap:19px}}
+@media(max-width:800px){.animated-chart{min-height:330px;height:330px}.grafico-texto{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.animated-chart .rise-bar{transform:none}.animated-chart .anim-dot,.animated-chart .anim-value{opacity:1}.animated-chart .anim-path{stroke-dashoffset:0}}
+</style><style>
+/* Acentos animados visibles por encima del fondo de las diapositivas.
+   Capa transparente, no captura clics ni cambia el contenido. */
+.circulos-visibles{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:4;isolation:isolate}
+.circulos-visibles .anillo{position:absolute;display:block;box-sizing:border-box;border:2px solid var(--borde);border-radius:50%;background:radial-gradient(circle at 32% 30%,var(--relleno),transparent 72%);opacity:.62;animation:deriva-visible var(--tiempo) ease-in-out infinite alternate;animation-delay:var(--retraso);will-change:transform}
+.circulos-visibles .motita{position:absolute;width:var(--tam);height:var(--tam);background:var(--color);border-radius:50%;opacity:.47;animation:motita-visible var(--tiempo) ease-in-out infinite alternate;animation-delay:var(--retraso);will-change:transform}
+@keyframes deriva-visible{0%{transform:translate3d(-12px,10px,0) scale(.93)}50%{transform:translate3d(24px,-20px,0) scale(1.08)}100%{transform:translate3d(-19px,32px,0) scale(.97)}}
+@keyframes motita-visible{0%{transform:translate3d(0,0,0);opacity:.27}50%{opacity:.65}100%{transform:translate3d(24px,-36px,0);opacity:.32}}
+@media(prefers-reduced-motion:reduce){.circulos-visibles .anillo,.circulos-visibles .motita{animation:none!important}}
+</style><style>
+/* Landing Page: gráficos completos y estáticos, sin animaciones pendientes. */
+body.modo-landing .animated-chart .anim-path { animation: none !important; stroke-dashoffset: 0 !important; }
+body.modo-landing .animated-chart .anim-dot,
+body.modo-landing .animated-chart .anim-value { animation: none !important; opacity: 1 !important; }
+body.modo-landing .animated-chart .rise-bar,
+body.modo-landing .animated-chart .grow-horizontal { animation: none !important; transform: none !important; }
+body.modo-landing .bar { animation: none !important; transform: scaleY(1) !important; }
+</style>
+</head>
+<body class="modo-slides">
+<div class="ambiente-particulas" aria-hidden="true">
+<span class="orbita " style="left:-7%;top:6%;width:230px;height:230px;--dur:13s;--delay:-3s"></span>
+<span class="orbita rosa" style="left:78%;top:-12%;width:260px;height:260px;--dur:17s;--delay:-6s"></span>
+<span class="orbita petroleo" style="left:88%;top:59%;width:210px;height:210px;--dur:15s;--delay:-5s"></span>
+<span class="orbita rosa" style="left:4%;top:72%;width:180px;height:180px;--dur:12s;--delay:-8s"></span>
+<span class="orbita " style="left:43%;top:-20%;width:140px;height:140px;--dur:19s;--delay:-2s"></span>
+<span class="orbita " style="left:67%;top:84%;width:125px;height:125px;--dur:16s;--delay:-10s"></span>
+<span class="orbita rosa" style="left:30%;top:34%;width:95px;height:95px;--dur:18s;--delay:-4s"></span>
+<span class="orbita rosa" style="left:-4%;top:44%;width:155px;height:155px;--dur:15s;--delay:-2s"></span>
+<span class="orbita petroleo" style="left:14%;top:12%;width:74px;height:74px;--dur:18s;--delay:-7s"></span>
+<span class="orbita " style="left:25%;top:89%;width:190px;height:190px;--dur:22s;--delay:-9s"></span>
+<span class="orbita rosa" style="left:53%;top:65%;width:120px;height:120px;--dur:19s;--delay:-4s"></span>
+<span class="orbita " style="left:89%;top:18%;width:92px;height:92px;--dur:14s;--delay:-5s"></span>
+<span class="orbita petroleo" style="left:72%;top:42%;width:62px;height:62px;--dur:17s;--delay:-1s"></span>
+<span class="orbita rosa" style="left:38%;top:8%;width:110px;height:110px;--dur:20s;--delay:-11s"></span>
+<span class="orbita " style="left:6%;top:58%;width:86px;height:86px;--dur:16s;--delay:-8s"></span>
+<span class="orbita petroleo" style="left:96%;top:83%;width:175px;height:175px;--dur:23s;--delay:-6s"></span>
+<span class="orbita rosa" style="left:61%;top:91%;width:240px;height:240px;--dur:21s;--delay:-3s"></span>
+<span class="orbita " style="left:48%;top:48%;width:65px;height:65px;--dur:13s;--delay:-7s"></span>
+<span class="orbita petroleo" style="left:-6%;top:89%;width:125px;height:125px;--dur:15s;--delay:-4s"></span>
+<span class="orbita rosa" style="left:81%;top:75%;width:79px;height:79px;--dur:18s;--delay:-10s"></span>
+<span class="punto" style="left:85%;top:63%;--size:9px;--dur:11s;--delay:-4s;--dx:-15px;--dy:-57px;--tone:#19a4a4;--glow:rgba(25,164,164,.24)"></span>
+<span class="punto" style="left:10%;top:34%;--size:7px;--dur:12s;--delay:-4s;--dx:30px;--dy:28px;--tone:#f19aa8;--glow:rgba(241,154,168,.28)"></span>
+<span class="punto" style="left:25%;top:33%;--size:4px;--dur:14s;--delay:-1s;--dx:-45px;--dy:33px;--tone:#083d4a;--glow:rgba(8,61,74,.22)"></span>
+<span class="punto" style="left:55%;top:96%;--size:3px;--dur:17s;--delay:-7s;--dx:24px;--dy:-72px;--tone:#19a4a4;--glow:rgba(25,164,164,.24)"></span>
+<span class="punto" style="left:84%;top:63%;--size:5px;--dur:9s;--delay:-9s;--dx:21px;--dy:-17px;--tone:#f19aa8;--glow:rgba(241,154,168,.28)"></span>
+<span class="punto" style="left:92%;top:69%;--size:4px;--dur:8s;--delay:-6s;--dx:12px;--dy:-66px;--tone:#083d4a;--glow:rgba(8,61,74,.22)"></span>
+<span class="punto" style="left:89%;top:69%;--size:3px;--dur:9s;--delay:-7s;--dx:-27px;--dy:-8px;--tone:#19a4a4;--glow:rgba(25,164,164,.24)"></span>
+<span class="punto" style="left:71%;top:8%;--size:4px;--dur:17s;--delay:0s;--dx:50px;--dy:-37px;--tone:#f19aa8;--glow:rgba(241,154,168,.28)"></span>
+<span class="punto" style="left:46%;top:75%;--size:7px;--dur:13s;--delay:-1s;--dx:13px;--dy:37px;--tone:#083d4a;--glow:rgba(8,61,74,.22)"></span>
+<span class="punto" style="left:61%;top:47%;--size:3px;--dur:12s;--delay:-2s;--dx:2px;--dy:-30px;--tone:#19a4a4;--glow:rgba(25,164,164,.24)"></span>
+<span class="punto" style="left:63%;top:47%;--size:7px;--dur:7s;--delay:-8s;--dx:-2px;--dy:-32px;--tone:#f19aa8;--glow:rgba(241,154,168,.28)"></span>
+<span class="punto" style="left:28%;top:96%;--size:6px;--dur:15s;--delay:-1s;--dx:20px;--dy:11px;--tone:#083d4a;--glow:rgba(8,61,74,.22)"></span>
+<span class="punto" style="left:9%;top:52%;--size:5px;--dur:17s;--delay:-1s;--dx:12px;--dy:-10px;--tone:#19a4a4;--glow:rgba(25,164,164,.24)"></span>
+<span class="punto" style="left:73%;top:91%;--size:9px;--dur:8s;--delay:-4s;--dx:51px;--dy:43px;--tone:#f19aa8;--glow:rgba(241,154,168,.28)"></span>
+<span class="punto" style="left:38%;top:67%;--size:3px;--dur:16s;--delay:0s;--dx:7px;--dy:-20px;--tone:#083d4a;--glow:rgba(8,61,74,.22)"></span>
+<span class="punto" style="left:63%;top:72%;--size:7px;--dur:17s;--delay:-1s;--dx:-65px;--dy:-61px;--tone:#19a4a4;--glow:rgba(25,164,164,.24)"></span>
+<span class="punto" style="left:49%;top:26%;--size:5px;--dur:18s;--delay:-9s;--dx:-41px;--dy:-67px;--tone:#f19aa8;--glow:rgba(241,154,168,.28)"></span>
+<span class="punto" style="left:73%;top:56%;--size:6px;--dur:18s;--delay:-7s;--dx:-65px;--dy:-29px;--tone:#083d4a;--glow:rgba(8,61,74,.22)"></span>
+<span class="punto" style="left:47%;top:96%;--size:3px;--dur:16s;--delay:-3s;--dx:-7px;--dy:22px;--tone:#19a4a4;--glow:rgba(25,164,164,.24)"></span>
+<span class="punto" style="left:26%;top:44%;--size:6px;--dur:8s;--delay:-5s;--dx:-55px;--dy:-29px;--tone:#f19aa8;--glow:rgba(241,154,168,.28)"></span>
+<span class="punto" style="left:10%;top:12%;--size:5px;--dur:10s;--delay:-2s;--dx:53px;--dy:47px;--tone:#083d4a;--glow:rgba(8,61,74,.22)"></span>
+<span class="punto" style="left:15%;top:31%;--size:7px;--dur:12s;--delay:-4s;--dx:-58px;--dy:50px;--tone:#19a4a4;--glow:rgba(25,164,164,.24)"></span>
+<span class="punto" style="left:22%;top:41%;--size:7px;--dur:14s;--delay:-3s;--dx:46px;--dy:2px;--tone:#f19aa8;--glow:rgba(241,154,168,.28)"></span>
+<span class="punto" style="left:87%;top:28%;--size:7px;--dur:19s;--delay:-2s;--dx:20px;--dy:70px;--tone:#083d4a;--glow:rgba(8,61,74,.22)"></span>
+<span class="punto" style="left:90%;top:9%;--size:4px;--dur:8s;--delay:-7s;--dx:-45px;--dy:-13px;--tone:#19a4a4;--glow:rgba(25,164,164,.24)"></span>
+<span class="punto" style="left:57%;top:42%;--size:5px;--dur:7s;--delay:-2s;--dx:-39px;--dy:27px;--tone:#f19aa8;--glow:rgba(241,154,168,.28)"></span>
+<span class="punto" style="left:13%;top:49%;--size:4px;--dur:9s;--delay:-12s;--dx:-60px;--dy:-28px;--tone:#083d4a;--glow:rgba(8,61,74,.22)"></span>
+<span class="punto" style="left:58%;top:8%;--size:7px;--dur:16s;--delay:-8s;--dx:48px;--dy:-63px;--tone:#19a4a4;--glow:rgba(25,164,164,.24)"></span>
+<span class="punto" style="left:30%;top:37%;--size:7px;--dur:10s;--delay:-1s;--dx:48px;--dy:18px;--tone:#f19aa8;--glow:rgba(241,154,168,.28)"></span>
+<span class="punto" style="left:44%;top:83%;--size:7px;--dur:10s;--delay:-6s;--dx:-17px;--dy:-34px;--tone:#083d4a;--glow:rgba(8,61,74,.22)"></span>
+<span class="punto" style="left:3%;top:46%;--size:4px;--dur:15s;--delay:-3s;--dx:17px;--dy:22px;--tone:#19a4a4;--glow:rgba(25,164,164,.24)"></span>
+
+<span class="orbita " style="left:17%;top:-8%;width:110px;height:110px;--dur:12s;--delay:-2s"></span>
+<span class="orbita rosa" style="left:57%;top:18%;width:75px;height:75px;--dur:14s;--delay:-3s"></span>
+<span class="orbita petroleo" style="left:80%;top:36%;width:135px;height:135px;--dur:16s;--delay:-4s"></span>
+<span class="orbita " style="left:35%;top:78%;width:86px;height:86px;--dur:18s;--delay:-5s"></span>
+<span class="orbita rosa" style="left:91%;top:12%;width:98px;height:98px;--dur:20s;--delay:-6s"></span>
+<span class="punto" style="left:84%;top:18%;--size:2px;--dur:20s;--delay:-5s;--dx:-24px;--dy:-8px;--tone:#19a4a4;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:20%;top:17%;--size:7px;--dur:20s;--delay:-9s;--dx:-44px;--dy:43px;--tone:#f19aa8;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:7%;top:7%;--size:2px;--dur:12s;--delay:-4s;--dx:9px;--dy:-59px;--tone:#083d4a;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:74%;top:29%;--size:7px;--dur:19s;--delay:-9s;--dx:-2px;--dy:-9px;--tone:#19a4a4;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:60%;top:79%;--size:4px;--dur:9s;--delay:-3s;--dx:34px;--dy:43px;--tone:#f19aa8;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:46%;top:39%;--size:3px;--dur:12s;--delay:-6s;--dx:-42px;--dy:-42px;--tone:#083d4a;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:51%;top:16%;--size:4px;--dur:14s;--delay:-10s;--dx:-22px;--dy:-54px;--tone:#19a4a4;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:96%;top:62%;--size:6px;--dur:10s;--delay:-7s;--dx:-45px;--dy:10px;--tone:#f19aa8;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:83%;top:83%;--size:4px;--dur:18s;--delay:-4s;--dx:35px;--dy:-48px;--tone:#083d4a;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:8%;top:88%;--size:3px;--dur:13s;--delay:-2s;--dx:54px;--dy:-6px;--tone:#19a4a4;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:15%;top:52%;--size:4px;--dur:16s;--delay:-6s;--dx:-35px;--dy:29px;--tone:#f19aa8;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:48%;top:30%;--size:7px;--dur:13s;--delay:-2s;--dx:22px;--dy:-22px;--tone:#083d4a;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:71%;top:35%;--size:3px;--dur:16s;--delay:-7s;--dx:-21px;--dy:-9px;--tone:#19a4a4;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:90%;top:45%;--size:2px;--dur:12s;--delay:-1s;--dx:48px;--dy:15px;--tone:#f19aa8;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:54%;top:38%;--size:2px;--dur:12s;--delay:-10s;--dx:36px;--dy:15px;--tone:#083d4a;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:30%;top:87%;--size:5px;--dur:15s;--delay:-8s;--dx:-37px;--dy:2px;--tone:#19a4a4;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:20%;top:35%;--size:7px;--dur:17s;--delay:-9s;--dx:-22px;--dy:44px;--tone:#f19aa8;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:77%;top:55%;--size:4px;--dur:12s;--delay:-3s;--dx:10px;--dy:61px;--tone:#083d4a;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:14%;top:10%;--size:2px;--dur:11s;--delay:-3s;--dx:46px;--dy:43px;--tone:#19a4a4;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:79%;top:12%;--size:5px;--dur:15s;--delay:-10s;--dx:4px;--dy:-1px;--tone:#f19aa8;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:73%;top:5%;--size:7px;--dur:20s;--delay:-2s;--dx:32px;--dy:3px;--tone:#083d4a;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:85%;top:47%;--size:2px;--dur:13s;--delay:-7s;--dx:-35px;--dy:51px;--tone:#19a4a4;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:3%;top:37%;--size:6px;--dur:11s;--delay:-9s;--dx:-42px;--dy:11px;--tone:#f19aa8;--glow:rgba(25,164,164,.20)"></span>
+<span class="punto" style="left:84%;top:68%;--size:6px;--dur:12s;--delay:-3s;--dx:-8px;--dy:-24px;--tone:#083d4a;--glow:rgba(25,164,164,.20)"></span>
+</div>
+
+<div aria-hidden="true" class="ambient-bg"><div class="ambient-orb orb-one"></div><div class="ambient-orb orb-two"></div><div class="ambient-orb orb-three"></div><div class="ambient-ring"></div></div>
+<!-- Barra superior de progreso -->
+<div class="barra" id="barra"></div>
+<!-- Botón flotante para alternar Modo Slides / Modo Landing -->
+<button aria-label="Cambiar modo de visualización" class="btn-modo" id="btn-modo">
+    📄 Ver como Landing Page
+  </button>
+<div class="escenario" id="escenario">
+<!-- SLIDE 1: PORTADA -->
+<section class="slide portada" data-seccion="Portada">
+<span class="etiqueta">Trabajo Práctico · Métodos Cuantitativos</span>
+<h1>Evolución y distribución de <span class="hl">registros de suicidios</span></h1>
+<p class="grande">Análisis cuantitativo en la República Argentina durante el período 2020-2024 utilizando bases de datos oficiales del SNIC y microdatos.</p>
+<p class="integrantes">Equipo: Miguelina Baldi · Micaela Cabrera · Florencia Scavone · Aldana Montenegro · Kayra Estrella</p></section>
+<!-- SLIDE 2: INTRODUCCIÓN Y PROBLEMA -->
+<section class="slide" data-seccion="Introducción">
+<span class="etiqueta salvia">Contexto y Problema</span>
+<h2 class="ancho">¿Cómo evolucionó la mortalidad entre 2020 y 2024?</h2>
+<div class="contexto-grilla"><div class="">
+<p>El suicidio representa una problemática de salud pública crítica y prevenible. Analizar el quinquenio post-pandemia permite evaluar tendencias y disparidades estructurales.</p>
+<p>Se integraron bases oficiales del <strong>SNIC</strong> y microdatos individuales que suman un total de <strong>19.323 víctimas</strong> analizadas en todo el país.</p>
+</div><div class="chart-panel"><div class="chart-titulo">Casos registrados por año</div><div aria-label="Casos registrados 2020 a 2024" class="bar-chart">
+<div class="bar-unit" style="--value:76.77%;--delay:0s"><strong>3.262</strong><div class="bar"></div><span>2020</span></div>
+<div class="bar-unit" style="--value:85.86%;--delay:.08s"><strong>3.648</strong><div class="bar"></div><span>2021</span></div>
+<div class="bar-unit" style="--value:93.18%;--delay:.16s"><strong>3.959</strong><div class="bar"></div><span>2022</span></div>
+<div class="bar-unit" style="--value:98.96%;--delay:.24s"><strong>4.205</strong><div class="bar"></div><span>2023</span></div>
+<div class="bar-unit" style="--value:100%;--delay:.32s"><strong>4.249</strong><div class="bar"></div><span>2024</span></div>
+</div><div class="chart-nota">Cantidades absolutas · SNIC</div></div></div>
+<div class="pregunta-revelable pregunta-central tarjeta">
+<h3>Pregunta Central</h3>
+<br/>
+<p> ¿Cómo evolucionó la mortalidad por suicidio en Argentina (2020-2024), qué franjas etarias concentran mayor vulnerabilidad y cómo se comporta la brecha de género?</p>
+</div></section>
+<!-- SLIDE 3: METODOLOGÍA Y PROCESAMIENTO (Cada ítem aparece de a uno) -->
+<section class="slide" data-seccion="Metodología">
+<span class="etiqueta">Datos y Herramientas</span>
+<h2 class="ancho">Procesamiento íntegro en Python y Colab</h2>
+<div class="metodologia-sin-caja">
+<div class="item-metodo">
+<div class="num">01</div>
+<div>
+<h3>Fuentes Oficiales</h3>
+<p>Cruce riguroso entre <code>snic-provincias.csv</code> y la base de microdatos individuales (2020-2024) mediante <code>pd.merge()</code>.</p>
+</div>
+</div>
+<div class="item-metodo">
+<div class="num">02</div>
+<div>
+<h3>Limpieza</h3>
+<p>Auditoría de valores nulos, confirmando que las celdas vacías correspondían a otros delitos, y estandarización categórica de edades.</p>
+</div>
+</div>
+<div class="item-metodo">
+<div class="num">03</div>
+<div>
+<h3>Transformaciones y resumen estadístico</h3>
+<p>Agregaciones lógicas con <code>groupby()</code> para evaluar evolución anual, distribución etaria y ratios de género.</p>
+</div>
+</div>
+<div class="item-metodo"><div class="num">04</div><div><h3>Visualización e interpretación</h3><p>Gráficos comparativos y análisis de los resultados obtenidos, considerando las limitaciones de los datos.</p></div></div></div>
+</section>
+<!-- SLIDE 4: GRÁFICO 1 - EVOLUCIÓN TEMPORAL -->
+<section class="slide" data-seccion="Gráfico 1: Temporal">
+<span class="etiqueta salvia">Gráfico I</span>
+<h2 class="ancho">Evolución temporal de la serie (2020-2024)</h2>
+<div class="fila grafico-texto">
+<div class="tarjeta grafico-grande">
+<div aria-label="Gráfico de Evolución Temporal" class="animated-chart" data-chart="line" role="img"></div>
+</div>
+<div class="texto-analisis">
+<p> La serie muestra una subida constante: un piso de 3.262 víctimas en 2020 y un techo de 4.249 en 2024, lo que representa un <strong>incremento acumulado del 30,25%</strong> en cinco años. Esto confirma que se trata de una problemática persistente que se consolida a nivel nacional.</p>
+</div>
+</div>
+</section>
+<!-- SLIDE 5: GRÁFICO 2 - DISTRIBUCIÓN ETARIA -->
+<section class="slide" data-seccion="Gráfico 2: Etario">
+<span class="etiqueta">Gráfico II</span>
+<h2 class="ancho">Vulnerabilidad según franja etaria</h2>
+<div class="fila grafico-texto">
+<div class="tarjeta grafico-grande">
+<div aria-label="Gráfico por Franja Etaria" class="animated-chart" data-chart="age" role="img"></div>
+</div>
+<div class="texto-analisis">
+<p> Se destaca un marcado pico de vulnerabilidad en la etapa de adultos jóvenes: la franja de <strong>15 a 34 años</strong> concentra la mayor cantidad de víctimas (superando las 2.400 en los picos de 20-29 años), evidenciando un descenso constante a medida que avanza la edad.</p>
+</div>
+</div>
+</section>
+<!-- SLIDE 6: GRÁFICO 3 - BRECHA DE GÉNERO -->
+<section class="slide" data-seccion="Gráfico 3: Género">
+<span class="etiqueta salvia">Gráfico III</span>
+<h2 class="ancho">Evolución comparativa según género</h2>
+<div class="fila grafico-texto">
+<div class="tarjeta grafico-grande">
+<div aria-label="Gráfico de Brecha de Género" class="animated-chart" data-chart="sex" role="img"></div>
+</div>
+<div class="texto-analisis">
+<p> Se registra una contundente y persistente brecha de género. Los varones concentran cerca del <strong>79% de los casos totales</strong>, manteniendo de forma sistemática una <strong>razón aproximada de 4 a 1</strong> frente a las mujeres a lo largo de todo el quinquenio.</p>
+</div>
+</div>
+</section>
+<!-- SLIDE 7: GRÁFICO 4 - RIESGO PROVINCIAL -->
+<section class="slide" data-seccion="Gráfico 4: Provincias">
+<span class="etiqueta">Gráfico IV</span>
+<h2 class="ancho">Riesgo relativo por jurisdicción (Tasas)</h2>
+<div class="fila grafico-texto">
+<div class="tarjeta grafico-grande">
+<div aria-label="Gráfico de Provincias" class="animated-chart" data-chart="province" role="img"></div>
+</div>
+<div class="texto-analisis">
+<p> Buenos Aires concentra el mayor volumen absoluto de casos (&gt;5.700), pero al ajustar por población su tasa es intermedia. En contraste, provincias como <strong>Entre Ríos, Catamarca, La Rioja y Salta</strong> presentan las tasas más altas cada 100.000 habitantes.</p>
+</div>
+</div>
+</section>
+<!-- SLIDE 8: CONCLUSIÓN Y CIERRE -->
+<section class="slide centrada" data-seccion="Conclusiones">
+<span class="etiqueta salvia">Conclusiones</span>
+<h2 class="ancho">Hallazgos y desafíos sanitarios</h2>
+<p class="grande">El estudio demuestra que la mortalidad por suicidio es una problemática crítica, con un aumento sostenido del 30,25% entre 2020 y 2024, fuertemente concentrada en varones jóvenes (15 a 34 años) y con heterogeneidad en las tasas provinciales.</p>
+<p class="">Esto subraya la necesidad imperiosa de diseñar políticas públicas de prevención focalizadas geográficamente por tasas y orientadas a los grupos etarios de mayor vulnerabilidad detectados.</p>
+</section>
+</div>
+<!-- Controles inferiores (modo diapositivas) -->
+<div class="pie" id="pie-controles">
+<div class="contador" id="contador">1 / 8</div>
+<div class="controles">
+<button aria-label="Diapositiva anterior" id="btn-ant">←</button>
+<button aria-label="Diapositiva siguiente" id="btn-sig">→</button>
+</div>
+</div>
+<script>
+const DATA={"annual": [3262, 3648, 3959, 4205, 4249], "ages": [["5–9", 9], ["10–14", 300], ["15–19", 1830], ["20–24", 2557], ["25–29", 2472], ["30–34", 2038], ["35–39", 1572], ["40–44", 1387], ["45–49", 1173], ["50–54", 940], ["55–59", 842], ["60–64", 825], ["65–69", 699], ["70–74", 616], ["75–79", 509], ["80–84", 401], ["85–89", 196], ["90+", 113]], "male": [2611, 2882, 3063, 3279, 3425], "female": [643, 754, 859, 868, 807], "prov": [{"provincia_nombre": "Corrientes", "tasa_promedio": 6.001371818294246, "casos_totales": 325.0}, {"provincia_nombre": "Río Negro", "tasa_promedio": 6.021175157860144, "casos_totales": 216.0}, {"provincia_nombre": "Buenos Aires", "tasa_promedio": 7.078548254030748, "casos_totales": 5792.0}, {"provincia_nombre": "CABA", "tasa_promedio": 7.095713053588403, "casos_totales": 1039.0}, {"provincia_nombre": "Córdoba", "tasa_promedio": 7.606157101937461, "casos_totales": 1381.0}, {"provincia_nombre": "Misiones", "tasa_promedio": 7.955762343572675, "casos_totales": 471.0}, {"provincia_nombre": "Jujuy", "tasa_promedio": 8.25081842375897, "casos_totales": 303.0}, {"provincia_nombre": "Neuquén", "tasa_promedio": 9.214584174060754, "casos_totales": 293.0}, {"provincia_nombre": "San Juan", "tasa_promedio": 9.720564425841223, "casos_totales": 370.0}, {"provincia_nombre": "Tucumán", "tasa_promedio": 10.606583845497505, "casos_totales": 858.0}, {"provincia_nombre": "Tierra del Fuego", "tasa_promedio": 10.63002741078897, "casos_totales": 89.0}, {"provincia_nombre": "Santa Fe", "tasa_promedio": 10.963489104165642, "casos_totales": 1862.0}, {"provincia_nombre": "Chubut", "tasa_promedio": 10.982359052769565, "casos_totales": 312.0}, {"provincia_nombre": "Chaco", "tasa_promedio": 11.067068704522763, "casos_totales": 608.0}, {"provincia_nombre": "Mendoza", "tasa_promedio": 11.198151558891102, "casos_totales": 1056.0}, {"provincia_nombre": "Santiago del Estero", "tasa_promedio": 12.30929330944402, "casos_totales": 581.0}, {"provincia_nombre": "Santa Cruz", "tasa_promedio": 12.545074164106934, "casos_totales": 203.0}, {"provincia_nombre": "La Pampa", "tasa_promedio": 12.8500120559625, "casos_totales": 223.0}, {"provincia_nombre": "Catamarca", "tasa_promedio": 12.888906581227019, "casos_totales": 258.0}, {"provincia_nombre": "Formosa", "tasa_promedio": 12.920531400776628, "casos_totales": 367.0}, {"provincia_nombre": "La Rioja", "tasa_promedio": 13.994221712511258, "casos_totales": 260.0}, {"provincia_nombre": "Salta", "tasa_promedio": 14.09222277104108, "casos_totales": 945.0}, {"provincia_nombre": "San Luis", "tasa_promedio": 14.2339463158846, "casos_totales": 348.0}, {"provincia_nombre": "Entre Ríos", "tasa_promedio": 17.41175876980166, "casos_totales": 1163.0}]};
+const slides=Array.from(document.querySelectorAll('.slide'));
+let current=0,methodCount=0,questionShown=false;
+const NS='http://www.w3.org/2000/svg';
+const SVG=(tag,a={},txt='')=>{const e=document.createElementNS(NS,tag);Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));if(txt!=='')e.textContent=txt;return e};
+const add=(p,tag,a={},text='')=>{const e=SVG(tag,a,text);p.appendChild(e);return e};
+const T=(v)=>Number(v).toLocaleString('es-AR');
+const chartTitle=(s,t)=>add(s,'text',{x:360,y:24,'text-anchor':'middle','font-size':15,'font-weight':700},t);
+const axis=(s,{left=67,right=690,top=52,bottom=374,max=4600,min=0,labels=[],units='Cantidad de víctimas',ticks=5}={})=>{
+  const y=v=>bottom-(v-min)/(max-min)*(bottom-top);const x=i=>left+(labels.length===1?0:(right-left)*i/(labels.length-1));
+  for(let i=0;i<=ticks;i++){const val=min+(max-min)*i/ticks,yy=y(val);add(s,'line',{x1:left,y1:yy,x2:right,y2:yy,class:'gridline'});add(s,'text',{x:left-10,y:yy+4,'text-anchor':'end',class:'tick'},Number.isInteger(val)?T(val):val.toFixed(1).replace('.',','))}
+  add(s,'line',{x1:left,y1:top,x2:left,y2:bottom,class:'axis'});add(s,'line',{x1:left,y1:bottom,x2:right,y2:bottom,class:'axis'});
+  add(s,'text',{x:(left+right)/2,y:447,'text-anchor':'middle',class:'axis-label'},'Año');
+  add(s,'text',{x:21,y:(top+bottom)/2,transform:`rotate(-90 21 ${(top+bottom)/2})`,'text-anchor':'middle',class:'axis-label'},units);
+  labels.forEach((v,i)=>add(s,'text',{x:x(i),y:bottom+23,'text-anchor':'middle',class:'tick'},String(v)));return {x,y,left,right,top,bottom};
+};
+function lines(holder,type){const s=add(holder,'svg',{viewBox:'0 0 730 465',preserveAspectRatio:'xMidYMid meet'});
+ const years=[2020,2021,2022,2023,2024],annual=type==='line';
+ chartTitle(s,annual?'Evolución temporal de la mortalidad por suicidio (2020–2024)':'Víctimas registradas según sexo (2020–2024)');
+ const a=axis(s,{labels:years,min:annual?3000:0,max:annual?4600:3700,ticks:annual?4:5});
+ const sets=annual?[{arr:DATA.annual,color:'#f19aa8',name:''}]:[{arr:DATA.male,color:'#0b4655',name:'Masculino'},{arr:DATA.female,color:'#e28ca1',name:'Femenino'}];
+ sets.forEach((set,si)=>{const coords=set.arr.map((v,i)=>[a.x(i),a.y(v)]),path=coords.map((c,i)=>(i?'L':'M')+c.join(' ')).join(' ');
+ let line=add(s,'path',{d:path,fill:'none',stroke:set.color,'stroke-width':3.4,'stroke-linecap':'round','stroke-linejoin':'round',class:'anim-path'});
+ let len=line.getTotalLength();line.style.setProperty('--length',(len+2)+'px');
+ coords.forEach(([x,y],i)=>{let delay=(i/4)*2.3;const point=add(s,'circle',{cx:x,cy:y,r:5,fill:annual?'#083d4a':set.color,stroke:'white','stroke-width':1.8,class:'anim-dot'});point.style.setProperty('--time',delay+'s');let label=add(s,'text',{x,y:y+(si===1?19:-13),'text-anchor':'middle',class:'anim-value point-label'},T(set.arr[i]));label.style.setProperty('--time',delay+'s')});
+ });
+ if(!annual){add(s,'circle',{cx:490,cy:34,r:5,fill:'#0b4655'});add(s,'text',{x:502,y:38,class:'tick'},'Masculino');add(s,'circle',{cx:595,cy:34,r:5,fill:'#e28ca1'});add(s,'text',{x:607,y:38,class:'tick'},'Femenino')}
+}
+function ageChart(holder){const s=add(holder,'svg',{viewBox:'0 0 750 470',preserveAspectRatio:'xMidYMid meet'});chartTitle(s,'Víctimas de suicidio por franja etaria (2020–2024)');let left=62,bottom=362,top=55,right=735,max=2900;
+ for(let t=0;t<=4;t++){let val=t*700,y=bottom-val/max*(bottom-top);add(s,'line',{x1:left,x2:right,y1:y,y2:y,class:'gridline'});add(s,'text',{x:left-9,y:y+4,'text-anchor':'end',class:'tick'},T(val))}
+ add(s,'line',{x1:left,x2:left,y1:top,y2:bottom,class:'axis'});add(s,'line',{x1:left,x2:right,y1:bottom,y2:bottom,class:'axis'});
+ add(s,'text',{x:20,y:200,transform:'rotate(-90 20 200)','text-anchor':'middle',class:'axis-label'},'Cantidad de víctimas');add(s,'text',{x:380,y:460,'text-anchor':'middle',class:'axis-label'},'Franja etaria');
+ const step=(right-left)/DATA.ages.length;DATA.ages.forEach(([name,v],i)=>{const h=v/max*(bottom-top),x=left+step*(i+.14),bar=add(s,'rect',{x,y:bottom-h,width:step*.7,height:h,rx:2,fill:i%2?'#1aa5a4':'#0b4655',class:'rise-bar'});bar.style.setProperty('--time',(i*.10)+'s');const label=add(s,'text',{x:x+step*.35,y:bottom-h-7,'text-anchor':'middle',class:'anim-value', 'font-size':10},T(v));label.style.setProperty('--time',(i*.10+.55)+'s');add(s,'text',{x:x+step*.35,y:bottom+14,transform:`rotate(-45 ${x+step*.35} ${bottom+14})`,'text-anchor':'end',class:'tick','font-size':10},name)});
+}
+function provincial(holder){const s=add(holder,'svg',{viewBox:'0 0 780 610',preserveAspectRatio:'xMidYMid meet'});chartTitle(s,'Promedio de víctimas por 100.000 habitantes por provincia (2020–2024)');
+ const vals=[...DATA.prov].sort((a,b)=>b.tasa_promedio-a.tasa_promedio),max=Math.max(...vals.map(o=>o.tasa_promedio))+1.5,top=48,left=166,right=705,bottom=555,step=(bottom-top)/vals.length;
+ const defs=add(s,'defs'),grad=add(defs,'linearGradient',{id:'prov-gradient',x1:'0%',y1:'0%',x2:'100%',y2:'0%'});add(grad,'stop',{offset:'0%','stop-color':'#083d4a'});add(grad,'stop',{offset:'100%','stop-color':'#18a5a4'});
+ for(let j=0;j<=5;j++){let v=max*j/5,x=left+(right-left)*v/max;add(s,'line',{x1:x,x2:x,y1:top,y2:bottom,class:'gridline'});add(s,'text',{x,y:bottom+15,'text-anchor':'middle',class:'tick'},v.toFixed(1).replace('.',','))}
+ vals.forEach((r,i)=>{let y=top+i*step+1,h=step*.75,w=(right-left)*r.tasa_promedio/max,delay=i*.09;
+ add(s,'text',{x:left-8,y:y+h*.75,'text-anchor':'end','font-size':11},r.provincia_nombre);
+ let bar=add(s,'rect',{x:left,y,width:w,height:h,rx:2,fill:'url(#prov-gradient)',class:'grow-horizontal'});bar.style.setProperty('--time',delay+'s');bar.style.transformOrigin=`${left}px ${y+h}px`;
+ let text=add(s,'text',{x:left+w+5,y:y+h*.72,'font-size':10,class:'anim-value'},r.tasa_promedio.toFixed(1).replace('.',','));text.style.setProperty('--time',(delay+.5)+'s');
+ });add(s,'text',{x:(left+right)/2,y:590,'text-anchor':'middle',class:'axis-label'},'Promedio de tasas publicadas por SNIC (por 100.000 habitantes)');
+}
+function renderCharts(){document.querySelectorAll('.animated-chart').forEach(el=>{let type=el.dataset.chart;el.replaceChildren();if(type==='line'||type==='sex')lines(el,type);else if(type==='age')ageChart(el);else provincial(el)});}
+function activateChart(){let el=slides[current].querySelector('.animated-chart');if(el){el.classList.remove('is-running');void el.offsetWidth;el.classList.add('is-running')}}
+function show(i){current=Math.min(Math.max(0,i),slides.length-1);slides.forEach((e,j)=>e.classList.toggle('activa',j===current));document.getElementById('contador').textContent=`${current+1} / ${slides.length}`;document.getElementById('barra').style.width=((current+1)/slides.length*100)+'%';if(current===1){questionShown=false;document.querySelector('.pregunta-revelable')?.classList.remove('revelado')};if(current===2){methodCount=1;updateMethods()};activateChart()}
+function updateMethods(){const a=slides[2].querySelectorAll('.item-metodo');a.forEach((e,i)=>e.classList.toggle('revelado',i<methodCount))}
+function next(){if(current===1&&!questionShown){questionShown=true;document.querySelector('.pregunta-revelable')?.classList.add('revelado');return}if(current===2&&methodCount<4){methodCount++;updateMethods();return}show(current+1)}
+function prev(){if(current===1&&questionShown){questionShown=false;document.querySelector('.pregunta-revelable')?.classList.remove('revelado');return}if(current===2&&methodCount>1){methodCount--;updateMethods();return}show(current-1);if(current===1){questionShown=true;document.querySelector('.pregunta-revelable')?.classList.add('revelado')}if(current===2){methodCount=4;updateMethods()}}
+document.getElementById('btn-sig').addEventListener('click',next);document.getElementById('btn-ant').addEventListener('click',prev);
+document.addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();next()}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev()}});
+const btn=document.getElementById('btn-modo');btn.addEventListener('click',()=>{document.body.classList.toggle('modo-landing');btn.textContent=document.body.classList.contains('modo-landing')?'📽 Ver como diapositivas':'📄 Ver como Landing Page';if(!document.body.classList.contains('modo-landing'))show(current)});
+renderCharts();show(0);
+</script><div class="circulos-visibles" aria-hidden="true">
+<span class="anillo" style="left:-6%;top:8%;width:174px;height:174px;--borde:rgba(24,165,164,.52);--relleno:rgba(24,165,164,.12);--tiempo:12s;--retraso:-0s"></span>
+<span class="anillo" style="left:81%;top:-7%;width:195px;height:195px;--borde:rgba(241,154,168,.61);--relleno:rgba(241,154,168,.14);--tiempo:14s;--retraso:-1s"></span>
+<span class="anillo" style="left:92%;top:51%;width:150px;height:150px;--borde:rgba(8,61,74,.46);--relleno:rgba(8,61,74,.09);--tiempo:16s;--retraso:-2s"></span>
+<span class="anillo" style="left:-4%;top:70%;width:136px;height:136px;--borde:rgba(241,154,168,.61);--relleno:rgba(241,154,168,.14);--tiempo:18s;--retraso:-3s"></span>
+<span class="anillo" style="left:23%;top:-12%;width:105px;height:105px;--borde:rgba(8,61,74,.46);--relleno:rgba(8,61,74,.09);--tiempo:20s;--retraso:-4s"></span>
+<span class="anillo" style="left:56%;top:-10%;width:91px;height:91px;--borde:rgba(24,165,164,.52);--relleno:rgba(24,165,164,.12);--tiempo:12s;--retraso:-5s"></span>
+<span class="anillo" style="left:73%;top:89%;width:139px;height:139px;--borde:rgba(241,154,168,.61);--relleno:rgba(241,154,168,.14);--tiempo:14s;--retraso:-6s"></span>
+<span class="anillo" style="left:5%;top:94%;width:108px;height:108px;--borde:rgba(24,165,164,.52);--relleno:rgba(24,165,164,.12);--tiempo:16s;--retraso:-0s"></span>
+<span class="anillo" style="left:95%;top:91%;width:88px;height:88px;--borde:rgba(24,165,164,.52);--relleno:rgba(24,165,164,.12);--tiempo:18s;--retraso:-1s"></span>
+<span class="anillo" style="left:68%;top:7%;width:65px;height:65px;--borde:rgba(241,154,168,.61);--relleno:rgba(241,154,168,.14);--tiempo:20s;--retraso:-2s"></span>
+<span class="anillo" style="left:39%;top:93%;width:76px;height:76px;--borde:rgba(8,61,74,.46);--relleno:rgba(8,61,74,.09);--tiempo:12s;--retraso:-3s"></span>
+<span class="anillo" style="left:48%;top:2%;width:45px;height:45px;--borde:rgba(24,165,164,.52);--relleno:rgba(24,165,164,.12);--tiempo:14s;--retraso:-4s"></span>
+<span class="anillo" style="left:13%;top:52%;width:43px;height:43px;--borde:rgba(241,154,168,.61);--relleno:rgba(241,154,168,.14);--tiempo:16s;--retraso:-5s"></span>
+<span class="anillo" style="left:84%;top:37%;width:62px;height:62px;--borde:rgba(24,165,164,.52);--relleno:rgba(24,165,164,.12);--tiempo:18s;--retraso:-6s"></span>
+<span class="anillo" style="left:30%;top:76%;width:49px;height:49px;--borde:rgba(8,61,74,.46);--relleno:rgba(8,61,74,.09);--tiempo:20s;--retraso:-0s"></span>
+<span class="motita" style="left:49%;top:45%;--tam:4px;--color:#18a5a4;--tiempo:9s;--retraso:-0s"></span>
+<span class="motita" style="left:50%;top:76%;--tam:5px;--color:#083d4a;--tiempo:10s;--retraso:-1s"></span>
+<span class="motita" style="left:36%;top:52%;--tam:7px;--color:#18a5a4;--tiempo:11s;--retraso:-2s"></span>
+<span class="motita" style="left:32%;top:87%;--tam:3px;--color:#f19aa8;--tiempo:12s;--retraso:-3s"></span>
+<span class="motita" style="left:20%;top:22%;--tam:5px;--color:#18a5a4;--tiempo:13s;--retraso:-4s"></span>
+<span class="motita" style="left:33%;top:86%;--tam:7px;--color:#083d4a;--tiempo:14s;--retraso:-5s"></span>
+<span class="motita" style="left:8%;top:18%;--tam:7px;--color:#18a5a4;--tiempo:15s;--retraso:-6s"></span>
+<span class="motita" style="left:56%;top:39%;--tam:4px;--color:#18a5a4;--tiempo:16s;--retraso:-7s"></span>
+<span class="motita" style="left:93%;top:49%;--tam:6px;--color:#18a5a4;--tiempo:17s;--retraso:-0s"></span>
+<span class="motita" style="left:72%;top:88%;--tam:3px;--color:#18a5a4;--tiempo:9s;--retraso:-1s"></span>
+<span class="motita" style="left:13%;top:21%;--tam:4px;--color:#18a5a4;--tiempo:10s;--retraso:-2s"></span>
+<span class="motita" style="left:35%;top:43%;--tam:4px;--color:#083d4a;--tiempo:11s;--retraso:-3s"></span>
+<span class="motita" style="left:4%;top:80%;--tam:7px;--color:#18a5a4;--tiempo:12s;--retraso:-4s"></span>
+<span class="motita" style="left:56%;top:10%;--tam:5px;--color:#f19aa8;--tiempo:13s;--retraso:-5s"></span>
+<span class="motita" style="left:19%;top:16%;--tam:3px;--color:#f19aa8;--tiempo:14s;--retraso:-6s"></span>
+<span class="motita" style="left:3%;top:87%;--tam:6px;--color:#f19aa8;--tiempo:15s;--retraso:-7s"></span>
+<span class="motita" style="left:30%;top:5%;--tam:3px;--color:#18a5a4;--tiempo:16s;--retraso:-0s"></span>
+<span class="motita" style="left:10%;top:61%;--tam:6px;--color:#f19aa8;--tiempo:17s;--retraso:-1s"></span>
+<span class="motita" style="left:69%;top:38%;--tam:7px;--color:#18a5a4;--tiempo:9s;--retraso:-2s"></span>
+<span class="motita" style="left:2%;top:86%;--tam:6px;--color:#f19aa8;--tiempo:10s;--retraso:-3s"></span>
+<span class="motita" style="left:23%;top:20%;--tam:3px;--color:#083d4a;--tiempo:11s;--retraso:-4s"></span>
+<span class="motita" style="left:6%;top:95%;--tam:3px;--color:#083d4a;--tiempo:12s;--retraso:-5s"></span>
+<span class="motita" style="left:91%;top:19%;--tam:6px;--color:#083d4a;--tiempo:13s;--retraso:-6s"></span>
+<span class="motita" style="left:91%;top:13%;--tam:7px;--color:#083d4a;--tiempo:14s;--retraso:-7s"></span>
+<span class="motita" style="left:54%;top:79%;--tam:3px;--color:#18a5a4;--tiempo:15s;--retraso:-0s"></span>
+<span class="motita" style="left:29%;top:58%;--tam:5px;--color:#083d4a;--tiempo:16s;--retraso:-1s"></span>
+<span class="motita" style="left:59%;top:90%;--tam:6px;--color:#f19aa8;--tiempo:17s;--retraso:-2s"></span>
+<span class="motita" style="left:11%;top:88%;--tam:5px;--color:#083d4a;--tiempo:9s;--retraso:-3s"></span>
+<span class="motita" style="left:28%;top:90%;--tam:4px;--color:#f19aa8;--tiempo:10s;--retraso:-4s"></span>
+<span class="motita" style="left:49%;top:93%;--tam:5px;--color:#083d4a;--tiempo:11s;--retraso:-5s"></span>
+<span class="motita" style="left:49%;top:40%;--tam:6px;--color:#083d4a;--tiempo:12s;--retraso:-6s"></span>
+<span class="motita" style="left:11%;top:30%;--tam:7px;--color:#18a5a4;--tiempo:13s;--retraso:-7s"></span>
+<span class="motita" style="left:28%;top:6%;--tam:4px;--color:#18a5a4;--tiempo:14s;--retraso:-0s"></span>
+<span class="motita" style="left:61%;top:88%;--tam:4px;--color:#18a5a4;--tiempo:15s;--retraso:-1s"></span>
+<span class="motita" style="left:31%;top:73%;--tam:7px;--color:#083d4a;--tiempo:16s;--retraso:-2s"></span>
+<span class="motita" style="left:20%;top:66%;--tam:5px;--color:#18a5a4;--tiempo:17s;--retraso:-3s"></span>
+<span class="motita" style="left:30%;top:52%;--tam:3px;--color:#f19aa8;--tiempo:9s;--retraso:-4s"></span>
+<span class="motita" style="left:77%;top:94%;--tam:4px;--color:#083d4a;--tiempo:10s;--retraso:-5s"></span>
+<span class="motita" style="left:64%;top:53%;--tam:5px;--color:#f19aa8;--tiempo:11s;--retraso:-6s"></span>
+<span class="motita" style="left:46%;top:6%;--tam:4px;--color:#083d4a;--tiempo:12s;--retraso:-7s"></span>
+<span class="motita" style="left:91%;top:22%;--tam:4px;--color:#083d4a;--tiempo:13s;--retraso:-0s"></span>
+<span class="motita" style="left:67%;top:86%;--tam:4px;--color:#f19aa8;--tiempo:14s;--retraso:-1s"></span>
+<span class="motita" style="left:94%;top:12%;--tam:3px;--color:#083d4a;--tiempo:15s;--retraso:-2s"></span>
+<span class="motita" style="left:86%;top:79%;--tam:5px;--color:#18a5a4;--tiempo:16s;--retraso:-3s"></span>
+<span class="motita" style="left:88%;top:54%;--tam:5px;--color:#f19aa8;--tiempo:17s;--retraso:-4s"></span>
+<span class="motita" style="left:20%;top:36%;--tam:6px;--color:#083d4a;--tiempo:9s;--retraso:-5s"></span>
+<span class="motita" style="left:30%;top:18%;--tam:5px;--color:#083d4a;--tiempo:10s;--retraso:-6s"></span>
+<span class="motita" style="left:76%;top:56%;--tam:5px;--color:#f19aa8;--tiempo:11s;--retraso:-7s"></span>
+<span class="motita" style="left:63%;top:91%;--tam:4px;--color:#18a5a4;--tiempo:12s;--retraso:-0s"></span>
+<span class="motita" style="left:65%;top:63%;--tam:7px;--color:#f19aa8;--tiempo:13s;--retraso:-1s"></span>
+<span class="motita" style="left:30%;top:64%;--tam:4px;--color:#f19aa8;--tiempo:14s;--retraso:-2s"></span>
+<span class="motita" style="left:38%;top:12%;--tam:4px;--color:#f19aa8;--tiempo:15s;--retraso:-3s"></span>
+<span class="motita" style="left:61%;top:75%;--tam:6px;--color:#18a5a4;--tiempo:16s;--retraso:-4s"></span>
+<span class="motita" style="left:79%;top:94%;--tam:7px;--color:#18a5a4;--tiempo:17s;--retraso:-5s"></span>
+<span class="motita" style="left:97%;top:83%;--tam:4px;--color:#f19aa8;--tiempo:9s;--retraso:-6s"></span>
+<span class="motita" style="left:64%;top:44%;--tam:5px;--color:#083d4a;--tiempo:10s;--retraso:-7s"></span>
+<span class="motita" style="left:23%;top:57%;--tam:3px;--color:#18a5a4;--tiempo:11s;--retraso:-0s"></span>
+<span class="motita" style="left:22%;top:81%;--tam:7px;--color:#f19aa8;--tiempo:12s;--retraso:-1s"></span>
+</div>
+</body>
+</html>
