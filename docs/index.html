@@ -1,153 +1,2185 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Evolución y distribución de registros de suicidios en Argentina (2020-2024)</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body class="modo-slides">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>
+			Evolución y distribución de registros de suicidios en Argentina
+			(2020-2024)
+		</title>
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Estilos CSS externos -->
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body class="modo-slides">
+		<!-- Partículas ambientales y orbes -->
+		<div class="ambiente-particulas" aria-hidden="true">
+			<span
+				class="orbita"
+				style="
+					left: -7%;
+					top: 6%;
+					width: 230px;
+					height: 230px;
+					--dur: 13s;
+					--delay: -3s;
+				"
+			></span>
+			<span
+				class="orbita rosa"
+				style="
+					left: 78%;
+					top: -12%;
+					width: 260px;
+					height: 260px;
+					--dur: 17s;
+					--delay: -6s;
+				"
+			></span>
+			<span
+				class="orbita petroleo"
+				style="
+					left: 88%;
+					top: 59%;
+					width: 210px;
+					height: 210px;
+					--dur: 15s;
+					--delay: -5s;
+				"
+			></span>
+			<span
+				class="orbita rosa"
+				style="
+					left: 4%;
+					top: 72%;
+					width: 180px;
+					height: 180px;
+					--dur: 12s;
+					--delay: -8s;
+				"
+			></span>
+			<span
+				class="orbita"
+				style="
+					left: 43%;
+					top: -20%;
+					width: 140px;
+					height: 140px;
+					--dur: 19s;
+					--delay: -2s;
+				"
+			></span>
+			<span
+				class="orbita"
+				style="
+					left: 67%;
+					top: 84%;
+					width: 125px;
+					height: 125px;
+					--dur: 16s;
+					--delay: -10s;
+				"
+			></span>
+			<span
+				class="orbita rosa"
+				style="
+					left: 30%;
+					top: 34%;
+					width: 95px;
+					height: 95px;
+					--dur: 18s;
+					--delay: -4s;
+				"
+			></span>
+			<span
+				class="orbita rosa"
+				style="
+					left: -4%;
+					top: 44%;
+					width: 155px;
+					height: 155px;
+					--dur: 15s;
+					--delay: -2s;
+				"
+			></span>
+			<span
+				class="orbita petroleo"
+				style="
+					left: 14%;
+					top: 12%;
+					width: 74px;
+					height: 74px;
+					--dur: 18s;
+					--delay: -7s;
+				"
+			></span>
+			<span
+				class="orbita"
+				style="
+					left: 25%;
+					top: 89%;
+					width: 190px;
+					height: 190px;
+					--dur: 22s;
+					--delay: -9s;
+				"
+			></span>
+			<span
+				class="orbita rosa"
+				style="
+					left: 53%;
+					top: 65%;
+					width: 120px;
+					height: 120px;
+					--dur: 19s;
+					--delay: -4s;
+				"
+			></span>
+			<span
+				class="orbita"
+				style="
+					left: 89%;
+					top: 18%;
+					width: 92px;
+					height: 92px;
+					--dur: 14s;
+					--delay: -5s;
+				"
+			></span>
+			<span
+				class="orbita petroleo"
+				style="
+					left: 72%;
+					top: 42%;
+					width: 62px;
+					height: 62px;
+					--dur: 17s;
+					--delay: -1s;
+				"
+			></span>
+			<span
+				class="orbita rosa"
+				style="
+					left: 38%;
+					top: 8%;
+					width: 110px;
+					height: 110px;
+					--dur: 20s;
+					--delay: -11s;
+				"
+			></span>
+			<span
+				class="orbita"
+				style="
+					left: 6%;
+					top: 58%;
+					width: 86px;
+					height: 86px;
+					--dur: 16s;
+					--delay: -8s;
+				"
+			></span>
+			<span
+				class="orbita petroleo"
+				style="
+					left: 96%;
+					top: 83%;
+					width: 175px;
+					height: 175px;
+					--dur: 23s;
+					--delay: -6s;
+				"
+			></span>
+			<span
+				class="orbita rosa"
+				style="
+					left: 61%;
+					top: 91%;
+					width: 240px;
+					height: 240px;
+					--dur: 21s;
+					--delay: -3s;
+				"
+			></span>
+			<span
+				class="orbita"
+				style="
+					left: 48%;
+					top: 48%;
+					width: 65px;
+					height: 65px;
+					--dur: 13s;
+					--delay: -7s;
+				"
+			></span>
+			<span
+				class="orbita petroleo"
+				style="
+					left: -6%;
+					top: 89%;
+					width: 125px;
+					height: 125px;
+					--dur: 15s;
+					--delay: -4s;
+				"
+			></span>
+			<span
+				class="orbita rosa"
+				style="
+					left: 81%;
+					top: 75%;
+					width: 79px;
+					height: 79px;
+					--dur: 18s;
+					--delay: -10s;
+				"
+			></span>
 
-  <!-- Barra superior de progreso -->
-  <div class="barra" id="barra"></div>
+			<span
+				class="punto"
+				style="
+					left: 85%;
+					top: 63%;
+					--size: 9px;
+					--dur: 11s;
+					--delay: -4s;
+					--dx: -15px;
+					--dy: -57px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.24);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 10%;
+					top: 34%;
+					--size: 7px;
+					--dur: 12s;
+					--delay: -4s;
+					--dx: 30px;
+					--dy: 28px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.28);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 25%;
+					top: 33%;
+					--size: 4px;
+					--dur: 14s;
+					--delay: -1s;
+					--dx: -45px;
+					--dy: 33px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.22);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 55%;
+					top: 96%;
+					--size: 3px;
+					--dur: 17s;
+					--delay: -7s;
+					--dx: 24px;
+					--dy: -72px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.24);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 84%;
+					top: 63%;
+					--size: 5px;
+					--dur: 9s;
+					--delay: -9s;
+					--dx: 21px;
+					--dy: -17px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.28);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 92%;
+					top: 69%;
+					--size: 4px;
+					--dur: 8s;
+					--delay: -6s;
+					--dx: 12px;
+					--dy: -66px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.22);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 89%;
+					top: 69%;
+					--size: 3px;
+					--dur: 9s;
+					--delay: -7s;
+					--dx: -27px;
+					--dy: -8px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.24);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 71%;
+					top: 8%;
+					--size: 4px;
+					--dur: 17s;
+					--delay: 0s;
+					--dx: 50px;
+					--dy: -37px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.28);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 46%;
+					top: 75%;
+					--size: 7px;
+					--dur: 13s;
+					--delay: -1s;
+					--dx: 13px;
+					--dy: 37px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.22);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 61%;
+					top: 47%;
+					--size: 3px;
+					--dur: 12s;
+					--delay: -2s;
+					--dx: 2px;
+					--dy: -30px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.24);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 63%;
+					top: 47%;
+					--size: 7px;
+					--dur: 7s;
+					--delay: -8s;
+					--dx: -2px;
+					--dy: -32px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.28);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 28%;
+					top: 96%;
+					--size: 6px;
+					--dur: 15s;
+					--delay: -1s;
+					--dx: 20px;
+					--dy: 11px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.22);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 9%;
+					top: 52%;
+					--size: 5px;
+					--dur: 17s;
+					--delay: -1s;
+					--dx: 12px;
+					--dy: -10px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.24);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 73%;
+					top: 91%;
+					--size: 9px;
+					--dur: 8s;
+					--delay: -4s;
+					--dx: 51px;
+					--dy: 43px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.28);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 38%;
+					top: 67%;
+					--size: 3px;
+					--dur: 16s;
+					--delay: 0s;
+					--dx: 7px;
+					--dy: -20px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.22);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 63%;
+					top: 72%;
+					--size: 7px;
+					--dur: 17s;
+					--delay: -1s;
+					--dx: -65px;
+					--dy: -61px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.24);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 49%;
+					top: 26%;
+					--size: 5px;
+					--dur: 18s;
+					--delay: -9s;
+					--dx: -41px;
+					--dy: -67px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.28);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 73%;
+					top: 56%;
+					--size: 6px;
+					--dur: 18s;
+					--delay: -7s;
+					--dx: -65px;
+					--dy: -29px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.22);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 47%;
+					top: 96%;
+					--size: 3px;
+					--dur: 16s;
+					--delay: -3s;
+					--dx: -7px;
+					--dy: 22px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.24);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 26%;
+					top: 44%;
+					--size: 6px;
+					--dur: 8s;
+					--delay: -5s;
+					--dx: -55px;
+					--dy: -29px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.28);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 10%;
+					top: 12%;
+					--size: 5px;
+					--dur: 10s;
+					--delay: -2s;
+					--dx: 53px;
+					--dy: 47px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.22);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 15%;
+					top: 31%;
+					--size: 7px;
+					--dur: 12s;
+					--delay: -4s;
+					--dx: -58px;
+					--dy: 50px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.24);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 22%;
+					top: 41%;
+					--size: 7px;
+					--dur: 14s;
+					--delay: -3s;
+					--dx: 46px;
+					--dy: 2px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.28);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 87%;
+					top: 28%;
+					--size: 7px;
+					--dur: 19s;
+					--delay: -2s;
+					--dx: 20px;
+					--dy: 70px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.22);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 90%;
+					top: 9%;
+					--size: 4px;
+					--dur: 8s;
+					--delay: -7s;
+					--dx: -45px;
+					--dy: -13px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.24);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 57%;
+					top: 42%;
+					--size: 5px;
+					--dur: 7s;
+					--delay: -2s;
+					--dx: -39px;
+					--dy: 27px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.28);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 13%;
+					top: 49%;
+					--size: 4px;
+					--dur: 9s;
+					--delay: -12s;
+					--dx: -60px;
+					--dy: -28px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.22);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 58%;
+					top: 8%;
+					--size: 7px;
+					--dur: 16s;
+					--delay: -8s;
+					--dx: 48px;
+					--dy: -63px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.24);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 30%;
+					top: 37%;
+					--size: 7px;
+					--dur: 10s;
+					--delay: -1s;
+					--dx: 48px;
+					--dy: 18px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.28);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 44%;
+					top: 83%;
+					--size: 7px;
+					--dur: 10s;
+					--delay: -6s;
+					--dx: -17px;
+					--dy: -34px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.22);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 3%;
+					top: 46%;
+					--size: 4px;
+					--dur: 15s;
+					--delay: -3s;
+					--dx: 17px;
+					--dy: 22px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.24);
+				"
+			></span>
 
-  <!-- Botón flotante para alternar Modo Slides / Modo Landing -->
-  <button id="btn-modo" class="btn-modo" aria-label="Cambiar modo de visualización">
-    📄 Ver como Landing Page
-  </button>
+			<span
+				class="orbita"
+				style="
+					left: 17%;
+					top: -8%;
+					width: 110px;
+					height: 110px;
+					--dur: 12s;
+					--delay: -2s;
+				"
+			></span>
+			<span
+				class="orbita rosa"
+				style="
+					left: 57%;
+					top: 18%;
+					width: 75px;
+					height: 75px;
+					--dur: 14s;
+					--delay: -3s;
+				"
+			></span>
+			<span
+				class="orbita petroleo"
+				style="
+					left: 80%;
+					top: 36%;
+					width: 135px;
+					height: 135px;
+					--dur: 16s;
+					--delay: -4s;
+				"
+			></span>
+			<span
+				class="orbita"
+				style="
+					left: 35%;
+					top: 78%;
+					width: 86px;
+					height: 86px;
+					--dur: 18s;
+					--delay: -5s;
+				"
+			></span>
+			<span
+				class="orbita rosa"
+				style="
+					left: 91%;
+					top: 12%;
+					width: 98px;
+					height: 98px;
+					--dur: 20s;
+					--delay: -6s;
+				"
+			></span>
 
-  <div class="escenario" id="escenario">
+			<span
+				class="punto"
+				style="
+					left: 84%;
+					top: 18%;
+					--size: 2px;
+					--dur: 20s;
+					--delay: -5s;
+					--dx: -24px;
+					--dy: -8px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 20%;
+					top: 17%;
+					--size: 7px;
+					--dur: 20s;
+					--delay: -9s;
+					--dx: -44px;
+					--dy: 43px;
+					--tone: #f19aa8;
+					--glow: rgba(25, 164, 164, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 7%;
+					top: 7%;
+					--size: 2px;
+					--dur: 12s;
+					--delay: -4s;
+					--dx: 9px;
+					--dy: -59px;
+					--tone: #083d4a;
+					--glow: rgba(25, 164, 164, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 74%;
+					top: 29%;
+					--size: 7px;
+					--dur: 19s;
+					--delay: -9s;
+					--dx: -2px;
+					--dy: -9px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 60%;
+					top: 79%;
+					--size: 4px;
+					--dur: 9s;
+					--delay: -3s;
+					--dx: 34px;
+					--dy: 43px;
+					--tone: #f19aa8;
+					--glow: rgba(25, 164, 164, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 46%;
+					top: 39%;
+					--size: 3px;
+					--dur: 12s;
+					--delay: -6s;
+					--dx: -42px;
+					--dy: -42px;
+					--tone: #083d4a;
+					--glow: rgba(25, 164, 164, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 51%;
+					top: 16%;
+					--size: 4px;
+					--dur: 14s;
+					--delay: -10s;
+					--dx: -22px;
+					--dy: -54px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 96%;
+					top: 62%;
+					--size: 6px;
+					--dur: 10s;
+					--delay: -7s;
+					--dx: -45px;
+					--dy: 10px;
+					--tone: #f19aa8;
+					--glow: rgba(25, 164, 164, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 83%;
+					top: 83%;
+					--size: 4px;
+					--dur: 18s;
+					--delay: -4s;
+					--dx: 35px;
+					--dy: -48px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 8%;
+					top: 88%;
+					--size: 3px;
+					--dur: 13s;
+					--delay: -2s;
+					--dx: 54px;
+					--dy: -6px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 15%;
+					top: 52%;
+					--size: 4px;
+					--dur: 16s;
+					--delay: -6s;
+					--dx: -35px;
+					--dy: 29px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 48%;
+					top: 30%;
+					--size: 7px;
+					--dur: 13s;
+					--delay: -2s;
+					--dx: 22px;
+					--dy: -22px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 71%;
+					top: 35%;
+					--size: 3px;
+					--dur: 16s;
+					--delay: -7s;
+					--dx: -21px;
+					--dy: -9px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 90%;
+					top: 45%;
+					--size: 2px;
+					--dur: 12s;
+					--delay: -1s;
+					--dx: 48px;
+					--dy: 15px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 54%;
+					top: 38%;
+					--size: 2px;
+					--dur: 12s;
+					--delay: -10s;
+					--dx: 36px;
+					--dy: 15px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 30%;
+					top: 87%;
+					--size: 5px;
+					--dur: 15s;
+					--delay: -8s;
+					--dx: -37px;
+					--dy: 2px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 20%;
+					top: 35%;
+					--size: 7px;
+					--dur: 17s;
+					--delay: -9s;
+					--dx: -22px;
+					--dy: 44px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 77%;
+					top: 55%;
+					--size: 4px;
+					--dur: 12s;
+					--delay: -3s;
+					--dx: 10px;
+					--dy: 61px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 14%;
+					top: 10%;
+					--size: 2px;
+					--dur: 11s;
+					--delay: -3s;
+					--dx: 46px;
+					--dy: 43px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 79%;
+					top: 12%;
+					--size: 5px;
+					--dur: 15s;
+					--delay: -10s;
+					--dx: 4px;
+					--dy: -1px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 73%;
+					top: 5%;
+					--size: 7px;
+					--dur: 20s;
+					--delay: -2s;
+					--dx: 32px;
+					--dy: 3px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 85%;
+					top: 47%;
+					--size: 2px;
+					--dur: 13s;
+					--delay: -7s;
+					--dx: -35px;
+					--dy: 51px;
+					--tone: #19a4a4;
+					--glow: rgba(25, 164, 164, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 3%;
+					top: 37%;
+					--size: 6px;
+					--dur: 11s;
+					--delay: -9s;
+					--dx: -42px;
+					--dy: 11px;
+					--tone: #f19aa8;
+					--glow: rgba(241, 154, 168, 0.2);
+				"
+			></span>
+			<span
+				class="punto"
+				style="
+					left: 84%;
+					top: 68%;
+					--size: 6px;
+					--dur: 12s;
+					--delay: -3s;
+					--dx: -8px;
+					--dy: -24px;
+					--tone: #083d4a;
+					--glow: rgba(8, 61, 74, 0.2);
+				"
+			></span>
+		</div>
 
-    <!-- SLIDE 1: PORTADA -->
-    <section class="slide portada" data-seccion="Portada">
-      <span class="etiqueta">Trabajo Práctico · Métodos Cuantitativos</span>
-      <h1>Evolución y distribución de <span class="hl">registros de suicidios</span></h1>
-      <p class="grande">Análisis cuantitativo en la República Argentina durante el período 2020-2024 utilizando bases de datos oficiales del SNIC y microdatos.</p>
-    </section>
+		<div aria-hidden="true" class="ambient-bg">
+			<div class="ambient-orb orb-one"></div>
+			<div class="ambient-orb orb-two"></div>
+			<div class="ambient-orb orb-three"></div>
+			<div class="ambient-ring"></div>
+		</div>
 
-    <!-- SLIDE 2: INTRODUCCIÓN Y PROBLEMA -->
-    <section class="slide" data-seccion="Introducción">
-      <span class="etiqueta salvia">Contexto y Problema</span>
-      <h2 class="ancho">¿Cómo evolucionó la mortalidad entre 2020 y 2024?</h2>
-      <div class="fila dos">
-        <div class="paso">
-          <p>El suicidio representa una problemática de salud pública crítica y prevenible. Analizar el quinquenio post-pandemia permite evaluar tendencias y disparidades estructurales.</p>
-          <p>Se integraron bases oficiales del <strong>SNIC</strong> y microdatos individuales que suman un total de <strong>19.323 víctimas</strong> analizadas en todo el país.</p>
-        </div>
-        <div class="tarjeta paso">
-          <h3>Pregunta Central</h3>
-          <br />
-          <p> ¿Cómo evolucionó la mortalidad por suicidio en Argentina (2020-2024), qué franjas etarias concentran mayor vulnerabilidad y cómo se comporta la brecha de género?</p>
-        </div>
-      </div>
-    </section>
+		<!-- Barra superior de progreso -->
+		<div class="barra" id="barra"></div>
 
-    <!-- SLIDE 3: METODOLOGÍA Y PROCESAMIENTO (Cada ítem aparece de a uno) -->
-    <section class="slide" data-seccion="Metodología">
-      <span class="etiqueta">Datos y Herramientas</span>
-      <h2 class="ancho">Procesamiento íntegro en Python y Colab</h2>
-      <div class="tarjeta tarjeta-metodologia">
-        <div class="item-metodo paso">
-          <div class="num">01</div>
-          <div>
-            <h3>Fuentes Oficiales</h3>
-            <p>Cruce riguroso entre <code>snic-provincias.csv</code> y la base de microdatos individuales (2020-2024) mediante <code>pd.merge()</code>.</p>
-          </div>
-        </div>
-        <div class="item-metodo paso">
-          <div class="num">02</div>
-          <div>
-            <h3>Limpieza</h3>
-            <p>Auditoría de valores nulos, confirmando que las celdas vacías correspondían a otros delitos, y estandarización categórica de edades.</p>
-          </div>
-        </div>
-        <div class="item-metodo paso">
-          <div class="num">03</div>
-          <div>
-            <h3>Modelado</h3>
-            <p>Agregaciones lógicas con <code>groupby()</code> para evaluar evolución anual, distribución etaria y ratios de género.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+		<!-- Botón flotante para alternar Modo Slides / Modo Landing -->
+		<button
+			aria-label="Cambiar modo de visualización"
+			class="btn-modo"
+			id="btn-modo"
+		>
+			📄 Ver como Landing Page
+		</button>
 
-    <!-- SLIDE 4: GRÁFICO 1 - EVOLUCIÓN TEMPORAL -->
-    <section class="slide" data-seccion="Gráfico 1: Temporal">
-      <span class="etiqueta salvia">Gráfico I</span>
-      <h2 class="ancho">Evolución temporal de la serie (2020-2024)</h2>
-      <div class="fila grafico-texto">
-        <div class="tarjeta grafico-grande">
-          <img src="grafico1_evolucion_temporal_2020_2024.png" alt="Gráfico de Evolución Temporal">
-        </div>
-        <div class="paso texto-analisis">
-          <p> La serie muestra una subida constante: un piso de 3.262 víctimas en 2020 y un techo de 4.249 en 2024, lo que representa un <strong>incremento acumulado del 30,25%</strong> en cinco años. Esto confirma que se trata de una problemática persistente que se consolida a nivel nacional.</p>
-        </div>
-      </div>
-    </section>
+		<div class="escenario" id="escenario">
+			<!-- SLIDE 1: PORTADA -->
+			<section class="slide portada" data-seccion="Portada">
+				<span class="etiqueta">Trabajo Práctico · Métodos Cuantitativos</span>
+				<h1>
+					Evolución y distribución de
+					<span class="hl">registros de suicidios</span>
+				</h1>
+				<p class="grande">
+					Análisis cuantitativo en la República Argentina durante el período
+					2020-2024 utilizando bases de datos oficiales del Sistema Nacional de
+					Información Criminal (SNIC) y microdatos unificados.
+				</p>
+				<p class="integrantes">
+					<a
+						href="https://github.com/baldimiguelina"
+						target="_blank"
+						class="btn-integrante"
+						>Miguelina Baldi</a
+					>
+					·
+					<a
+						href="https://github.com/cabrera30micaela"
+						target="_blank"
+						class="btn-integrante"
+						>Micaela Cabrera</a
+					>
+					·
+					<a
+						href="https://github.com/scavonemf"
+						target="_blank"
+						class="btn-integrante"
+						>Florencia Scavone</a
+					>
+					·
+					<a
+						href="https://github.com/AldanaMontenegro"
+						target="_blank"
+						class="btn-integrante"
+						>Aldana Montenegro</a
+					>
+					·
+					<a
+						href="https://github.com/Kayraa2003"
+						target="_blank"
+						class="btn-integrante"
+						>Kayra Estrella</a
+					>
+				</p>
+			</section>
 
-    <!-- SLIDE 5: GRÁFICO 2 - DISTRIBUCIÓN ETARIA -->
-    <section class="slide" data-seccion="Gráfico 2: Etario">
-      <span class="etiqueta">Gráfico II</span>
-      <h2 class="ancho">Vulnerabilidad según franja etaria</h2>
-      <div class="fila grafico-texto">
-        <div class="tarjeta grafico-grande">
-          <img src="grafico2_edad.png" alt="Gráfico por Franja Etaria">
-        </div>
-        <div class="paso texto-analisis">
-          <p> Se destaca un marcado pico de vulnerabilidad en la etapa de adultos jóvenes: la franja de <strong>15 a 34 años</strong> concentra la mayor cantidad de víctimas (superando las 2.400 en los picos de 20-29 años), evidenciando un descenso constante a medida que avanza la edad.</p>
-        </div>
-      </div>
-    </section>
+			<!-- SLIDE 2: INTRODUCCIÓN Y PROBLEMA (Original sin tarjeta blanca) -->
+			<section class="slide" data-seccion="Introducción">
+				<span class="etiqueta salvia">Pregunta central y motivación</span>
+				<h2 class="ancho">
+					¿Cómo evolucionó la mortalidad por suicidio en Argentina (2020-2024),
+					qué franjas etarias concentran mayor vulnerabilidad y cómo se comporta
+					la brecha de género?
+				</h2>
+				<div class="ancho">
+					<div>
+						<p>
+							El suicidio representa una problemática de salud pública crítica y
+							prevenible. Analizar el quinquenio post-pandemia permite evaluar
+							tendencias y disparidades estructurales.
+						</p>
+						<p>
+							Se integraron bases oficiales del <strong>SNIC</strong> y
+							microdatos individuales que suman un total de
+							<strong>19.323 víctimas</strong> analizadas en todo el país.
+						</p>
+					</div>
+				</div>
+			</section>
 
-    <!-- SLIDE 6: GRÁFICO 3 - BRECHA DE GÉNERO -->
-    <section class="slide" data-seccion="Gráfico 3: Género">
-      <span class="etiqueta salvia">Gráfico III</span>
-      <h2 class="ancho">Evolución comparativa según género</h2>
-      <div class="fila grafico-texto">
-        <div class="tarjeta grafico-grande">
-          <img src="grafico3_sexo.png" alt="Gráfico de Brecha de Género">
-        </div>
-        <div class="paso texto-analisis">
-          <p> Se registra una contundente y persistente brecha de género. Los varones concentran cerca del <strong>79% de los casos totales</strong>, manteniendo de forma sistemática una <strong>razón aproximada de 4 a 1</strong> frente a las mujeres a lo largo de todo el quinquenio.</p>
-        </div>
-      </div>
-    </section>
+			<!-- SLIDE 3: METODOLOGÍA Y PROCESAMIENTO -->
+			<section class="slide" data-seccion="Metodología">
+				<span class="etiqueta">Datos y Herramientas</span>
+				<h2 class="ancho">Procesamiento íntegro en Python y Colab</h2>
+				<div class="metodologia-sin-caja">
+					<div class="item-metodo item-metodo-animado" style="--i: 1">
+						<div class="num">01</div>
+						<div>
+							<h3>Fuentes Oficiales</h3>
+							<p>
+								Cruce riguroso entre <code>snic-provincias.csv</code> y la base
+								de microdatos individuales (2020-2024) mediante
+								<code>pd.merge()</code>.
+							</p>
+						</div>
+					</div>
+					<div class="item-metodo item-metodo-animado" style="--i: 2">
+						<div class="num">02</div>
+						<div>
+							<h3>Limpieza</h3>
+							<p>
+								Auditoría de valores nulos, confirmando que las celdas vacías
+								correspondían a otros delitos, y estandarización categórica de
+								edades.
+							</p>
+						</div>
+					</div>
+					<div class="item-metodo item-metodo-animado" style="--i: 3">
+						<div class="num">03</div>
+						<div>
+							<h3>Transformaciones y resumen estadístico</h3>
+							<p>
+								Agregaciones lógicas con <code>groupby()</code> para evaluar
+								evolución anual, distribución etaria y ratios de género.
+							</p>
+						</div>
+					</div>
+					<div class="item-metodo item-metodo-animado" style="--i: 4">
+						<div class="num">04</div>
+						<div>
+							<h3>Visualización e interpretación</h3>
+							<p>
+								Gráficos comparativos y análisis de los resultados obtenidos,
+								considerando las limitaciones de los datos.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
 
-    <!-- SLIDE 7: GRÁFICO 4 - RIESGO PROVINCIAL -->
-    <section class="slide" data-seccion="Gráfico 4: Provincias">
-      <span class="etiqueta">Gráfico IV</span>
-      <h2 class="ancho">Riesgo relativo por jurisdicción (Tasas)</h2>
-      <div class="fila grafico-texto">
-        <div class="tarjeta grafico-grande">
-          <img src="grafico4_provincias.png" alt="Gráfico de Provincias">
-        </div>
-        <div class="paso texto-analisis">
-          <p> Buenos Aires concentra el mayor volumen absoluto de casos (&gt;5.700), pero al ajustar por población su tasa es intermedia. En contraste, provincias como <strong>Entre Ríos, Catamarca, La Rioja y Salta</strong> presentan las tasas más altas cada 100.000 habitantes.</p>
-        </div>
-      </div>
-    </section>
+			<!-- SLIDE 4: GRÁFICO 1 - EVOLUCIÓN TEMPORAL -->
+			<section class="slide" data-seccion="Gráfico 1: Temporal">
+				<span class="etiqueta salvia">Gráfico I</span>
+				<h2 class="ancho">Evolución temporal de la serie (2020-2024)</h2>
+				<div class="grafico-texto">
+					<div class="tarjeta grafico-grande">
+						<div
+							aria-label="Gráfico de Evolución Temporal"
+							class="animated-chart"
+							data-chart="line"
+							role="img"
+						></div>
+					</div>
+					<div class="texto-analisis">
+						<p>
+							La serie muestra una subida constante: un piso de 3.262 víctimas
+							en 2020 y un techo de 4.249 en 2024, lo que representa un
+							<strong>incremento acumulado del 30,25%</strong> en cinco años.
+							Esto confirma que se trata de una problemática persistente que se
+							consolida a nivel nacional.
+						</p>
+					</div>
+				</div>
+			</section>
 
-    <!-- SLIDE 8: CONCLUSIÓN Y CIERRE -->
-    <section class="slide centrada" data-seccion="Conclusiones">
-      <span class="etiqueta salvia">Conclusiones</span>
-      <h2 class="ancho">Hallazgos y desafíos sanitarios</h2>
-      <p class="grande paso">El estudio demuestra que la mortalidad por suicidio es una problemática crítica, con un aumento sostenido del 30,25% entre 2020 y 2024, fuertemente concentrada en varones jóvenes (15 a 34 años) y con heterogeneidad en las tasas provinciales.</p>
-      <p class="paso">Esto subraya la necesidad imperiosa de diseñar políticas públicas de prevención focalizadas geográficamente por tasas y orientadas a los grupos etarios de mayor vulnerabilidad detectados.</p>
-    </section>
+			<!-- SLIDE 5: GRÁFICO 2 - DISTRIBUCIÓN ETARIA -->
+			<section class="slide" data-seccion="Gráfico 2: Etario">
+				<span class="etiqueta">Gráfico II</span>
+				<h2 class="ancho">Vulnerabilidad según franja etaria</h2>
+				<div class="grafico-texto">
+					<div class="tarjeta grafico-grande">
+						<div
+							aria-label="Gráfico por Franja Etaria"
+							class="animated-chart"
+							data-chart="age"
+							role="img"
+						></div>
+					</div>
+					<div class="texto-analisis">
+						<p>
+							Se destaca un marcado pico de vulnerabilidad en la etapa de
+							adultos jóvenes: la franja de
+							<strong>15 a 34 años</strong> concentra la mayor cantidad de
+							víctimas (superando las 2.400 en los picos de 20-29 años),
+							evidenciando un descenso constante a medida que avanza la edad.
+						</p>
+					</div>
+				</div>
+			</section>
 
-  </div>
+			<!-- SLIDE 6: GRÁFICO 3 - BRECHA DE GÉNERO -->
+			<section class="slide" data-seccion="Gráfico 3: Género">
+				<span class="etiqueta salvia">Gráfico III</span>
+				<h2 class="ancho">Evolución comparativa según género</h2>
+				<div class="grafico-texto">
+					<div class="tarjeta grafico-grande">
+						<div
+							aria-label="Gráfico de Brecha de Género"
+							class="animated-chart"
+							data-chart="sex"
+							role="img"
+						></div>
+					</div>
+					<div class="texto-analisis">
+						<p>
+							Se registra una contundente y persistente brecha de género. Los
+							varones concentran cerca del
+							<strong>79% de los casos totales</strong>, manteniendo de forma
+							sistemática una <strong>razón aproximada de 4 a 1</strong> frente
+							a las mujeres a lo largo de todo el quinquenio.
+						</p>
+					</div>
+				</div>
+			</section>
 
-  <!-- Controles inferiores (modo diapositivas) -->
-  <div class="pie" id="pie-controles">
-    <div class="contador" id="contador">1 / 8</div>
-    <div class="controles">
-      <button id="btn-ant" aria-label="Diapositiva anterior">←</button>
-      <button id="btn-sig" aria-label="Diapositiva siguiente">→</button>
-    </div>
-  </div>
+			<!-- SLIDE 7: GRÁFICO 4 - RIESGO PROVINCIAL -->
+			<section class="slide" data-seccion="Gráfico 4: Provincias">
+				<span class="etiqueta">Gráfico IV</span>
+				<h2 class="ancho">Riesgo relativo por jurisdicción (Tasas)</h2>
+				<div class="grafico-texto">
+					<div class="tarjeta grafico-grande">
+						<div
+							aria-label="Gráfico de Provincias"
+							class="animated-chart"
+							data-chart="province"
+							role="img"
+						></div>
+					</div>
+					<div class="texto-analisis">
+						<p>
+							Buenos Aires concentra el mayor volumen absoluto de casos
+							(>5.700), pero al ajustar por población su tasa es intermedia. En
+							contraste, provincias como
+							<strong>Entre Ríos, Catamarca, La Rioja y Salta</strong> presentan
+							las tasas más altas cada 100.000 habitantes.
+						</p>
+					</div>
+				</div>
+			</section>
 
-  <script src="script.js"></script>
-</body>
+			<!-- SLIDE 8: CONCLUSIÓN Y CIERRE -->
+			<section class="slide centrada" data-seccion="Conclusiones">
+				<span class="etiqueta salvia">Conclusiones</span>
+				<h2 class="ancho">Hallazgos y desafíos sanitarios</h2>
+				<p class="grande">
+					El estudio demuestra que la mortalidad por suicidio es una
+					problemática crítica, con un aumento sostenido del 30,25% entre 2020 y
+					2024, fuertemente concentrada en varones jóvenes (15 a 34 años) y con
+					heterogeneidad en las tasas provinciales.
+				</p>
+				<p>
+					Esto subraya la necesidad imperiosa de diseñar políticas públicas de
+					prevención focalizadas geográficamente por tasas y orientadas a los
+					grupos etarios de mayor vulnerabilidad detectados.
+				</p>
+			</section>
+		</div>
+
+		<!-- Círculos visibles y JS externo -->
+		<div class="circulos-visibles" aria-hidden="true">
+			<span
+				class="anillo"
+				style="
+					left: -6%;
+					top: 8%;
+					width: 174px;
+					height: 174px;
+					--borde: rgba(24, 165, 164, 0.52);
+					--relleno: rgba(24, 165, 164, 0.12);
+					--tiempo: 12s;
+					--retraso: -0s;
+				"
+			></span>
+			<span
+				class="anillo"
+				style="
+					left: 81%;
+					top: -7%;
+					width: 195px;
+					height: 195px;
+					--borde: rgba(241, 154, 168, 0.61);
+					--relleno: rgba(241, 154, 168, 0.14);
+					--tiempo: 14s;
+					--retraso: -1s;
+				"
+			></span>
+			<span
+				class="anillo"
+				style="
+					left: 92%;
+					top: 51%;
+					width: 150px;
+					height: 150px;
+					--borde: rgba(8, 61, 74, 0.46);
+					--relleno: rgba(8, 61, 74, 0.09);
+					--tiempo: 16s;
+					--retraso: -2s;
+				"
+			></span>
+			<span
+				class="anillo"
+				style="
+					left: -4%;
+					top: 70%;
+					width: 136px;
+					height: 136px;
+					--borde: rgba(241, 154, 168, 0.61);
+					--relleno: rgba(241, 154, 168, 0.14);
+					--tiempo: 18s;
+					--retraso: -3s;
+				"
+			></span>
+			<span
+				class="anillo"
+				style="
+					left: 23%;
+					top: -12%;
+					width: 105px;
+					height: 105px;
+					--borde: rgba(8, 61, 74, 0.46);
+					--relleno: rgba(8, 61, 74, 0.09);
+					--tiempo: 20s;
+					--retraso: -4s;
+				"
+			></span>
+			<span
+				class="anillo"
+				style="
+					left: 56%;
+					top: -10%;
+					width: 91px;
+					height: 91px;
+					--borde: rgba(24, 165, 164, 0.52);
+					--relleno: rgba(24, 165, 164, 0.12);
+					--tiempo: 12s;
+					--retraso: -5s;
+				"
+			></span>
+			<span
+				class="anillo"
+				style="
+					left: 73%;
+					top: 89%;
+					width: 139px;
+					height: 139px;
+					--borde: rgba(241, 154, 168, 0.61);
+					--relleno: rgba(241, 154, 168, 0.14);
+					--tiempo: 14s;
+					--retraso: -6s;
+				"
+			></span>
+			<span
+				class="anillo"
+				style="
+					left: 5%;
+					top: 94%;
+					width: 108px;
+					height: 108px;
+					--borde: rgba(24, 165, 164, 0.52);
+					--relleno: rgba(24, 165, 164, 0.12);
+					--tiempo: 16s;
+					--retraso: -0s;
+				"
+			></span>
+			<span
+				class="anillo"
+				style="
+					left: 95%;
+					top: 91%;
+					width: 88px;
+					height: 88px;
+					--borde: rgba(24, 165, 164, 0.52);
+					--relleno: rgba(24, 165, 164, 0.12);
+					--tiempo: 18s;
+					--retraso: -1s;
+				"
+			></span>
+			<span
+				class="anillo"
+				style="
+					left: 68%;
+					top: 7%;
+					width: 65px;
+					height: 65px;
+					--borde: rgba(241, 154, 168, 0.61);
+					--relleno: rgba(241, 154, 168, 0.14);
+					--tiempo: 20s;
+					--retraso: -2s;
+				"
+			></span>
+			<span
+				class="anillo"
+				style="
+					left: 39%;
+					top: 93%;
+					width: 76px;
+					height: 76px;
+					--borde: rgba(8, 61, 74, 0.46);
+					--relleno: rgba(8, 61, 74, 0.09);
+					--tiempo: 12s;
+					--retraso: -3s;
+				"
+			></span>
+			<span
+				class="anillo"
+				style="
+					left: 48%;
+					top: 2%;
+					width: 45px;
+					height: 45px;
+					--borde: rgba(24, 165, 164, 0.52);
+					--relleno: rgba(24, 165, 164, 0.12);
+					--tiempo: 14s;
+					--retraso: -4s;
+				"
+			></span>
+			<span
+				class="anillo"
+				style="
+					left: 13%;
+					top: 52%;
+					width: 43px;
+					height: 43px;
+					--borde: rgba(241, 154, 168, 0.61);
+					--relleno: rgba(241, 154, 168, 0.14);
+					--tiempo: 16s;
+					--retraso: -5s;
+				"
+			></span>
+			<span
+				class="anillo"
+				style="
+					left: 84%;
+					top: 37%;
+					width: 62px;
+					height: 62px;
+					--borde: rgba(24, 165, 164, 0.52);
+					--relleno: rgba(24, 165, 164, 0.12);
+					--tiempo: 18s;
+					--retraso: -6s;
+				"
+			></span>
+			<span
+				class="anillo"
+				style="
+					left: 30%;
+					top: 76%;
+					width: 49px;
+					height: 49px;
+					--borde: rgba(8, 61, 74, 0.46);
+					--relleno: rgba(8, 61, 74, 0.09);
+					--tiempo: 20s;
+					--retraso: -0s;
+				"
+			></span>
+
+			<span
+				class="motita"
+				style="
+					left: 49%;
+					top: 45%;
+					--tam: 4px;
+					--color: #18a5a4;
+					--tiempo: 9s;
+					--retraso: -0s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 50%;
+					top: 76%;
+					--tam: 5px;
+					--color: #083d4a;
+					--tiempo: 10s;
+					--retraso: -1s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 36%;
+					top: 52%;
+					--tam: 7px;
+					--color: #18a5a4;
+					--tiempo: 11s;
+					--retraso: -2s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 32%;
+					top: 87%;
+					--tam: 3px;
+					--color: #f19aa8;
+					--tiempo: 12s;
+					--retraso: -3s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 20%;
+					top: 22%;
+					--tam: 5px;
+					--color: #18a5a4;
+					--tiempo: 13s;
+					--retraso: -4s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 33%;
+					top: 86%;
+					--tam: 7px;
+					--color: #083d4a;
+					--tiempo: 14s;
+					--retraso: -5s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 8%;
+					top: 18%;
+					--tam: 7px;
+					--color: #18a5a4;
+					--tiempo: 15s;
+					--retraso: -6s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 56%;
+					top: 39%;
+					--tam: 4px;
+					--color: #18a5a4;
+					--tiempo: 16s;
+					--retraso: -7s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 93%;
+					top: 49%;
+					--tam: 6px;
+					--color: #18a5a4;
+					--tiempo: 17s;
+					--retraso: -0s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 72%;
+					top: 88%;
+					--tam: 3px;
+					--color: #18a5a4;
+					--tiempo: 9s;
+					--retraso: -1s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 13%;
+					top: 21%;
+					--tam: 4px;
+					--color: #18a5a4;
+					--tiempo: 10s;
+					--retraso: -2s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 35%;
+					top: 43%;
+					--tam: 4px;
+					--color: #083d4a;
+					--tiempo: 11s;
+					--retraso: -3s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 4%;
+					top: 80%;
+					--tam: 7px;
+					--color: #18a5a4;
+					--tiempo: 12s;
+					--retraso: -4s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 56%;
+					top: 10%;
+					--tam: 5px;
+					--color: #f19aa8;
+					--tiempo: 13s;
+					--retraso: -5s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 19%;
+					top: 16%;
+					--tam: 3px;
+					--color: #f19aa8;
+					--tiempo: 14s;
+					--retraso: -6s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 3%;
+					top: 87%;
+					--tam: 6px;
+					--color: #f19aa8;
+					--tiempo: 15s;
+					--retraso: -7s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 30%;
+					top: 5%;
+					--tam: 3px;
+					--color: #18a5a4;
+					--tiempo: 16s;
+					--retraso: -0s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 10%;
+					top: 61%;
+					--tam: 6px;
+					--color: #f19aa8;
+					--tiempo: 17s;
+					--retraso: -1s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 69%;
+					top: 38%;
+					--tam: 7px;
+					--color: #18a5a4;
+					--tiempo: 9s;
+					--retraso: -2s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 2%;
+					top: 86%;
+					--tam: 6px;
+					--color: #f19aa8;
+					--tiempo: 10s;
+					--retraso: -3s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 23%;
+					top: 20%;
+					--tam: 3px;
+					--color: #083d4a;
+					--tiempo: 11s;
+					--retraso: -4s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 6%;
+					top: 95%;
+					--tam: 3px;
+					--color: #083d4a;
+					--tiempo: 12s;
+					--retraso: -5s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 91%;
+					top: 19%;
+					--tam: 6px;
+					--color: #083d4a;
+					--tiempo: 13s;
+					--retraso: -6s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 91%;
+					top: 13%;
+					--tam: 7px;
+					--color: #083d4a;
+					--tiempo: 14s;
+					--retraso: -7s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 54%;
+					top: 79%;
+					--tam: 3px;
+					--color: #18a5a4;
+					--tiempo: 15s;
+					--retraso: -0s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 29%;
+					top: 58%;
+					--tam: 5px;
+					--color: #083d4a;
+					--tiempo: 16s;
+					--retraso: -1s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 59%;
+					top: 90%;
+					--tam: 6px;
+					--color: #f19aa8;
+					--tiempo: 17s;
+					--retraso: -2s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 11%;
+					top: 88%;
+					--tam: 5px;
+					--color: #083d4a;
+					--tiempo: 9s;
+					--retraso: -3s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 28%;
+					top: 90%;
+					--tam: 4px;
+					--color: #f19aa8;
+					--tiempo: 10s;
+					--retraso: -4s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 49%;
+					top: 93%;
+					--tam: 5px;
+					--color: #083d4a;
+					--tiempo: 11s;
+					--retraso: -5s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 49%;
+					top: 40%;
+					--tam: 6px;
+					--color: #083d4a;
+					--tiempo: 12s;
+					--retraso: -6s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 11%;
+					top: 30%;
+					--tam: 7px;
+					--color: #18a5a4;
+					--tiempo: 13s;
+					--retraso: -7s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 28%;
+					top: 6%;
+					--tam: 4px;
+					--color: #18a5a4;
+					--tiempo: 14s;
+					--retraso: -0s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 61%;
+					top: 88%;
+					--tam: 4px;
+					--color: #18a5a4;
+					--tiempo: 15s;
+					--retraso: -1s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 31%;
+					top: 73%;
+					--tam: 7px;
+					--color: #083d4a;
+					--tiempo: 16s;
+					--retraso: -2s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 20%;
+					top: 66%;
+					--tam: 5px;
+					--color: #18a5a4;
+					--tiempo: 17s;
+					--retraso: -3s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 30%;
+					top: 52%;
+					--tam: 3px;
+					--color: #f19aa8;
+					--tiempo: 9s;
+					--retraso: -4s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 77%;
+					top: 94%;
+					--tam: 4px;
+					--color: #083d4a;
+					--tiempo: 10s;
+					--retraso: -5s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 64%;
+					top: 53%;
+					--tam: 5px;
+					--color: #f19aa8;
+					--tiempo: 11s;
+					--retraso: -6s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 46%;
+					top: 6%;
+					--tam: 4px;
+					--color: #083d4a;
+					--tiempo: 12s;
+					--retraso: -7s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 91%;
+					top: 22%;
+					--tam: 4px;
+					--color: #083d4a;
+					--tiempo: 13s;
+					--retraso: -0s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 67%;
+					top: 86%;
+					--tam: 4px;
+					--color: #f19aa8;
+					--tiempo: 14s;
+					--retraso: -1s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 94%;
+					top: 12%;
+					--tam: 3px;
+					--color: #083d4a;
+					--tiempo: 15s;
+					--retraso: -2s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 86%;
+					top: 79%;
+					--tam: 5px;
+					--color: #18a5a4;
+					--tiempo: 16s;
+					--retraso: -3s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 88%;
+					top: 54%;
+					--tam: 5px;
+					--color: #f19aa8;
+					--tiempo: 17s;
+					--retraso: -4s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 20%;
+					top: 36%;
+					--tam: 6px;
+					--color: #083d4a;
+					--tiempo: 9s;
+					--retraso: -5s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 30%;
+					top: 18%;
+					--tam: 5px;
+					--color: #083d4a;
+					--tiempo: 10s;
+					--retraso: -6s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 76%;
+					top: 56%;
+					--tam: 5px;
+					--color: #f19aa8;
+					--tiempo: 11s;
+					--retraso: -7s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 63%;
+					top: 91%;
+					--tam: 4px;
+					--color: #18a5a4;
+					--tiempo: 12s;
+					--retraso: -0s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 65%;
+					top: 63%;
+					--tam: 7px;
+					--color: #f19aa8;
+					--tiempo: 13s;
+					--retraso: -1s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 30%;
+					top: 64%;
+					--tam: 4px;
+					--color: #f19aa8;
+					--tiempo: 14s;
+					--retraso: -2s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 38%;
+					top: 12%;
+					--tam: 4px;
+					--color: #f19aa8;
+					--tiempo: 15s;
+					--retraso: -3s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 61%;
+					top: 75%;
+					--tam: 6px;
+					--color: #18a5a4;
+					--tiempo: 16s;
+					--retraso: -4s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 79%;
+					top: 94%;
+					--tam: 7px;
+					--color: #18a5a4;
+					--tiempo: 17s;
+					--retraso: -5s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 97%;
+					top: 83%;
+					--tam: 4px;
+					--color: #f19aa8;
+					--tiempo: 9s;
+					--retraso: -6s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 64%;
+					top: 44%;
+					--tam: 5px;
+					--color: #083d4a;
+					--tiempo: 10s;
+					--retraso: -7s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 23%;
+					top: 57%;
+					--tam: 3px;
+					--color: #18a5a4;
+					--tiempo: 11s;
+					--retraso: -0s;
+				"
+			></span>
+			<span
+				class="motita"
+				style="
+					left: 22%;
+					top: 81%;
+					--tam: 7px;
+					--color: #f19aa8;
+					--tiempo: 12s;
+					--retraso: -1s;
+				"
+			></span>
+		</div>
+
+		<!-- Controles inferiores -->
+		<div class="pie" id="pie-controles">
+			<div class="contador" id="contador">1 / 8</div>
+			<div class="controles">
+				<button aria-label="Diapositiva anterior" id="btn-ant">←</button>
+				<button aria-label="Diapositiva siguiente" id="btn-sig">→</button>
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
 </html>
+
