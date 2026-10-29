@@ -1,333 +1,865 @@
-/* ══ 1. VARIABLES Y PALETA (Fondo Blanco, Acentos Naranja y Verde Salvia) ══ */
 :root {
-  --fondo: #FFFFFF;
-  --superficie: #F8FAFC; /* Gris piedra muy suave para tarjetas sin bordes */
-  --texto: #1E293B;      /* Alta legibilidad accesible */
-  --titulo: #0F172A;
-  --tenue: #475569;
-  --naranja: #DD6B20;    /* Acento principal */
-  --naranja-fondo: rgba(221, 107, 32, 0.12);
-  --salvia: #319795;     /* Acento secundario (Verde/Salvia) */
-  --salvia-fondo: rgba(49, 151, 149, 0.12);
-  --borde: #E2E8F0;
-  --roboto: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--navy: #083d4a;
+	--text: #4b6070;
+	--teal: #19a4a4;
+	--salvia: #159d9e;
+	--ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+	box-sizing: border-box;
+}
 
+html,
 body {
-  font-family: var(--roboto);
-  color: var(--texto);
-  background-color: var(--fondo);
-  line-height: 1.6;
+	margin: 0;
+	width: 100%;
+	max-width: 100%;
+	height: 100%;
+	overflow: hidden;
+	font-family: Roboto, Arial, sans-serif;
+	color: var(--navy);
+	background: #ffffff;
 }
 
-/* ══ 2. BOTÓN FLOTANTE Y BARRA ══ */
-.btn-modo {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: var(--superficie);
-  color: var(--titulo);
-  border: none;
-  padding: 12px 24px;
-  border-radius: 999px;
-  font-family: var(--roboto);
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+button {
+	font: inherit;
 }
 
-.btn-modo:hover {
-  background: var(--naranja);
-  color: #FFFFFF;
+/* Fondo ambiental animado y orbes */
+body::before,
+body::after {
+	content: "";
+	position: fixed;
+	z-index: 0;
+	pointer-events: none;
+	border-radius: 45% 55% 60% 40%;
+	filter: blur(6px);
+	will-change: transform;
+	animation: flotarA 9s ease-in-out infinite alternate;
 }
 
-.barra {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 4px;
-  background: var(--naranja);
-  z-index: 999;
-  transition: width 0.3s ease;
+body::before {
+	width: 52vw;
+	height: 64vh;
+	top: -24vh;
+	right: -11vw;
+	background: radial-gradient(
+		ellipse,
+		rgba(25, 164, 164, 0.29),
+		rgba(25, 164, 164, 0.12) 54%,
+		transparent 75%
+	);
 }
 
-/* ══ 3. TIPOGRAFÍA Y ELEMENTOS COMUNES ══ */
-h1, h2, h3 {
-  font-family: var(--roboto);
-  color: var(--titulo);
-  line-height: 1.15;
+body::after {
+	width: 47vw;
+	height: 60vh;
+	left: -14vw;
+	bottom: -27vh;
+	background: radial-gradient(
+		ellipse,
+		rgba(241, 154, 168, 0.28),
+		rgba(241, 154, 168, 0.11) 53%,
+		transparent 75%
+	);
+	animation-name: flotarB;
+	animation-duration: 12s;
 }
 
-h1 { font-size: 64px; font-weight: 900; letter-spacing: -1.3px; }
-h2 { font-size: 44px; font-weight: 700; letter-spacing: -0.4px; max-width: 720px; }
-h2.ancho { max-width: none; }
-h3 { font-size: 24px; font-weight: 700; color: var(--titulo); }
+@keyframes flotarA {
+	from {
+		transform: translate(-35px, 0) rotate(-12deg) scale(0.94);
+	}
+	to {
+		transform: translate(75px, 105px) rotate(15deg) scale(1.14);
+	}
+}
 
-p { color: var(--tenue); font-size: 20px; font-weight: 400; }
-p.grande { font-size: 25px; color: var(--titulo); font-weight: 400; }
-strong { color: var(--titulo); font-weight: 700; }
+@keyframes flotarB {
+	from {
+		transform: translate(-25px, 55px) rotate(12deg) scale(1);
+	}
+	to {
+		transform: translate(85px, -70px) rotate(-20deg) scale(1.2);
+	}
+}
+
+/* ===== Fondo animado (igual que presentacion_tp_index) ===== */
+.ambient-bg {
+	position: fixed;
+	inset: 0;
+	overflow: hidden;
+	pointer-events: none;
+	z-index: 0;
+	background: linear-gradient(120deg, #f9fdfc, #f8fcfc 50%, #fff9fb);
+}
+
+.ambient-orb {
+	position: absolute;
+	border-radius: 50%;
+	filter: blur(5px);
+	will-change: transform;
+	opacity: 0.85;
+}
+
+.orb-one {
+	width: 45vw;
+	height: 60vw;
+	max-height: 780px;
+	top: -22vw;
+	right: -7vw;
+	background: radial-gradient(
+		circle,
+		rgba(24, 165, 164, 0.31) 0%,
+		rgba(24, 165, 164, 0.13) 51%,
+		transparent 74%
+	);
+	animation: orbTravelOne 6s ease-in-out infinite alternate;
+}
+
+.orb-two {
+	width: 48vw;
+	height: 45vw;
+	left: -15vw;
+	bottom: -19vw;
+	background: radial-gradient(
+		circle,
+		rgba(243, 154, 168, 0.33) 0%,
+		rgba(243, 154, 168, 0.13) 55%,
+		transparent 74%
+	);
+	animation: orbTravelTwo 7.5s ease-in-out infinite alternate;
+}
+
+/* Este orbe no existía en tu CSS */
+.orb-three {
+	width: 32vw;
+	height: 32vw;
+	right: 8vw;
+	bottom: -18vw;
+	background: radial-gradient(circle, rgba(8, 61, 74, 0.16), transparent 72%);
+	animation: orbTravelThree 8s linear infinite alternate;
+}
+
+.ambient-ring {
+	position: absolute;
+	right: 3vw;
+	top: 8vh;
+	width: 220px;
+	height: 220px;
+	border-radius: 45% 55% 42% 58%;
+	border: 2px solid rgba(24, 165, 164, 0.27);
+	animation: ringRotate 13s linear infinite;
+}
+
+@keyframes orbTravelOne {
+	0% {
+		transform: translate(-90px, -40px) scale(0.82);
+	}
+	100% {
+		transform: translate(120px, 140px) scale(1.15);
+	}
+}
+@keyframes orbTravelTwo {
+	0% {
+		transform: translate(-60px, 80px) scale(0.9);
+	}
+	100% {
+		transform: translate(145px, -115px) scale(1.2);
+	}
+}
+@keyframes orbTravelThree {
+	0% {
+		transform: translate(-70px, 20px);
+	}
+	100% {
+		transform: translate(90px, -110px);
+	}
+}
+@keyframes ringRotate {
+	from {
+		transform: rotate(0deg) translateX(0);
+	}
+	to {
+		transform: rotate(360deg) translateX(45px);
+	}
+}
+
+/* ===== Círculos y puntos flotantes ===== */
+.ambiente-particulas {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	overflow: hidden;
+	pointer-events: none;
+	isolation: isolate;
+}
+
+.ambiente-particulas .orbita {
+	position: absolute;
+	border-radius: 50%;
+	border: 2px solid rgba(19, 150, 153, 0.2);
+	background: radial-gradient(
+		circle at 32% 28%,
+		rgba(255, 255, 255, 0.15),
+		rgba(27, 167, 166, 0.095) 60%,
+		rgba(16, 70, 82, 0.04)
+	);
+	animation: orbita-flota var(--dur) ease-in-out var(--delay) infinite alternate;
+	will-change: transform;
+	opacity: 0.78;
+}
+
+.ambiente-particulas .orbita.rosa {
+	border-color: rgba(237, 131, 163, 0.23);
+	background: radial-gradient(
+		circle at 30% 30%,
+		rgba(255, 255, 255, 0.14),
+		rgba(241, 154, 168, 0.14) 65%,
+		rgba(241, 154, 168, 0.03)
+	);
+}
+
+/* Esta variante faltaba */
+.ambiente-particulas .orbita.petroleo {
+	border-color: rgba(8, 61, 74, 0.15);
+	background: radial-gradient(circle, rgba(25, 91, 109, 0.08), transparent 76%);
+}
+
+.ambiente-particulas .punto {
+	position: absolute;
+	width: var(--size);
+	height: var(--size);
+	border-radius: 50%;
+	background: var(--tone);
+	opacity: 0.56;
+	box-shadow: 0 0 11px var(--glow);
+	animation: punto-flota var(--dur) ease-in-out var(--delay) infinite alternate;
+	will-change: transform, opacity;
+}
+
+@keyframes orbita-flota {
+	0% {
+		transform: translate3d(0, 0, 0) scale(0.9) rotate(0deg);
+	}
+	50% {
+		transform: translate3d(40px, -45px, 0) scale(1.06) rotate(7deg);
+	}
+	100% {
+		transform: translate3d(-35px, 40px, 0) scale(0.96) rotate(-10deg);
+	}
+}
+@keyframes punto-flota {
+	0% {
+		transform: translate3d(0, 0, 0);
+		opacity: 0.18;
+	}
+	40% {
+		opacity: 0.67;
+	}
+	100% {
+		transform: translate3d(var(--dx), var(--dy), 0);
+		opacity: 0.36;
+	}
+}
+
+/* ===== Círculos visibles por encima de las diapositivas ===== */
+.circulos-visibles {
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	overflow: hidden;
+	z-index: 4;
+	isolation: isolate;
+}
+
+.circulos-visibles .anillo {
+	position: absolute;
+	display: block;
+	box-sizing: border-box;
+	border: 2px solid var(--borde);
+	border-radius: 50%;
+	background: radial-gradient(
+		circle at 32% 30%,
+		var(--relleno),
+		transparent 72%
+	);
+	opacity: 0.62;
+	animation: deriva-visible var(--tiempo) ease-in-out infinite alternate;
+	animation-delay: var(--retraso);
+	will-change: transform;
+}
+
+.circulos-visibles .motita {
+	position: absolute;
+	width: var(--tam);
+	height: var(--tam);
+	background: var(--color);
+	border-radius: 50%;
+	opacity: 0.47;
+	animation: motita-visible var(--tiempo) ease-in-out infinite alternate;
+	animation-delay: var(--retraso);
+	will-change: transform;
+}
+
+@keyframes deriva-visible {
+	0% {
+		transform: translate3d(-12px, 10px, 0) scale(0.93);
+	}
+	50% {
+		transform: translate3d(24px, -20px, 0) scale(1.08);
+	}
+	100% {
+		transform: translate3d(-19px, 32px, 0) scale(0.97);
+	}
+}
+@keyframes motita-visible {
+	0% {
+		transform: translate3d(0, 0, 0);
+		opacity: 0.27;
+	}
+	50% {
+		opacity: 0.65;
+	}
+	100% {
+		transform: translate3d(24px, -36px, 0);
+		opacity: 0.32;
+	}
+}
+
+/* Contenedor de la presentación con FLEXBOX */
+.escenario {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	height: 100dvh;
+	display: flex;
+	flex-direction: column;
+}
+
+.slide {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: clamp(10px, 1.5vh, 18px);
+	padding: clamp(35px, 5vh, 55px) clamp(34px, 8vw, 115px) clamp(45px, 6vh, 65px);
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(20px);
+	transition:
+		opacity 0.62s var(--ease),
+		transform 0.62s var(--ease);
+	overflow: hidden;
+	min-width: 0;
+}
+
+.slide.activa {
+	opacity: 1;
+	transform: none;
+	pointer-events: auto;
+}
+
+.slide > * {
+	flex-shrink: 0;
+	min-width: 0;
+}
+
+/* Animación escalonada para los ítems de metodología */
+.slide .item-metodo-animado {
+	opacity: 0;
+	transform: translateY(20px);
+	transition:
+		opacity 0.5s var(--ease),
+		transform 0.5s var(--ease);
+	transition-delay: calc(var(--i) * 0.12s);
+}
+
+.slide.activa .item-metodo-animado {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+h1,
+h2,
+h3,
+p {
+	margin: 0;
+}
+
+h1 {
+	font-size: clamp(36px, 3.5vw, 52px);
+	line-height: 1.12;
+	max-width: 1050px;
+}
+
+h2 {
+	font-size: clamp(24px, 2.3vw, 36px);
+	line-height: 1.15;
+}
+
+p {
+	color: var(--text);
+	font-size: clamp(16px, 1.3vw, 19px);
+	line-height: 1.58;
+}
+
+.grande {
+	font-size: clamp(17px, 1.48vw, 21px);
+	line-height: 1.53;
+	max-width: 1080px;
+}
+
+strong {
+	color: var(--navy);
+	font-weight: 700;
+}
 
 .hl {
-  background: linear-gradient(transparent 60%, var(--naranja-fondo) 60%, var(--naranja-fondo) 92%, transparent 92%);
-  padding: 0 2px;
-  color: var(--titulo);
+	box-shadow: inset 0 -0.15em rgba(25, 164, 164, 0.25);
 }
 
 .etiqueta {
-  display: inline-block;
-  align-self: flex-start;
-  background: var(--naranja);
-  color: #FFFFFF;
-  font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-  padding: 10px 20px;
-  border-radius: 999px;
+	align-self: flex-start;
+	background: var(--navy);
+	color: white;
+	border-radius: 99px;
+	font-size: 13px;
+	font-weight: 700;
+	padding: 10px 17px;
+	text-transform: uppercase;
 }
 
 .etiqueta.salvia {
-  background: var(--salvia);
-  color: #FFFFFF;
+	background: var(--salvia);
 }
 
-code {
-  background: #F1F5F9;
-  padding: 3px 7px;
-  border-radius: 4px;
-  font-family: monospace;
-  font-size: 18px;
-  color: #1E293B;
+.integrantes {
+	margin-top: 6px !important;
+	color: #596979;
+	font-size: 14px;
+	line-height: 1.7;
 }
 
-/* Grillas y Tarjetas (Sin bordes, con sombra sutil) */
-.fila { display: grid; gap: 32px; align-items: center; }
-.dos { grid-template-columns: 1.2fr 1fr; }
+/* Estilo para los botones de las integrantes */
+.btn-integrante {
+	color: var(--navy);
+	text-decoration: none;
+	font-weight: 700;
+	padding: 3px 12px;
+	border-radius: 6px;
+	background: rgba(25, 164, 164, 0.08);
+	border: 1px solid rgba(25, 164, 164, 0.2);
+	transition: all 0.25s ease;
+	display: inline-block;
+	margin: 2px 0;
+}
+
+.btn-integrante:hover {
+	background: var(--teal);
+	color: #ffffff;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(25, 164, 164, 0.3);
+}
+
+.portada {
+	align-items: flex-start;
+}
 
 .tarjeta {
-  background: var(--superficie);
-  border: none;
-  border-radius: 16px;
-  padding: 28px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+	border: 1px solid rgba(25, 164, 164, 0.15);
+	border-radius: 19px;
+	background: rgba(255, 255, 255, 0.95);
+	padding: clamp(12px, 1.5vw, 20px);
+	box-shadow: 0 10px 32px rgba(8, 61, 74, 0.08);
 }
 
-/* ESTILO DE LA TARJETA METODOLÓGICA VERTICAL */
-.tarjeta.tarjeta-metodologia {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 30px 36px;
+/* Metodología con Flexbox */
+.metodologia-sin-caja {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 
 .item-metodo {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--borde);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 16px;
+	padding: 12px 0;
+	border-bottom: 1px solid rgba(8, 61, 74, 0.09);
+	max-width: 1080px;
 }
 
-.item-metodo:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+.num {
+	flex: 0 0 45px;
+	font-size: 21px;
+	color: var(--teal);
+	font-weight: 900;
 }
 
-.item-metodo .num {
-  font-size: 28px;
-  font-weight: 900;
-  color: var(--naranja);
-  line-height: 1;
+code {
+	background: #edf1f2;
+	color: var(--navy);
+	border-radius: 4px;
+	padding: 2px 5px;
 }
 
-/* GRILLA ESPECIAL: Gráfico Gigante a la Izquierda, Texto a la Derecha */
-.fila.grafico-texto {
-  grid-template-columns: 1.8fr 1fr;
-  gap: 36px;
-  align-items: center;
+/* Layout FLEX con ALIGN-ITEMS: FLEX-START */
+/* Proporción exacta: 60% para el gráfico (izq) y 40% para el texto (der) */
+.grafico-texto {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	gap: 24px;
+	width: 100%;
+	min-width: 0;
 }
 
-.tarjeta.grafico-grande {
-  background: var(--superficie);
-  border: none;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.05);
-}
-
-.tarjeta.grafico-grande img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
+.grafico-grande {
+	flex: 0 0 60%;
+	max-width: 60%;
+	min-width: 0;
+	padding: 12px;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.98);
+	border: 1px solid #d5e6e6;
+	border-radius: 20px;
+	box-shadow: 0 12px 28px rgba(8, 61, 74, 0.1);
 }
 
 .texto-analisis {
-  font-size: 20px;
+	flex: 0 0 40%;
+	max-width: 40%;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
-/* Animación y pasos interactivos */
-.paso {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
+.centrada {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
 }
 
-.paso.visto, .ver-todo .paso {
-  opacity: 1;
-  transform: none;
+.centrada .etiqueta {
+	align-self: center;
 }
 
-/* ══ 4. MODO SLIDES (Diapositivas Pantalla Completa) ══ */
-body.modo-slides { height: 100vh; overflow: hidden; }
-
-body.modo-slides .escenario {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 1500px;
-  height: 850px;
-  transform: translate(-50%, -50%) scale(var(--escala, 1));
+.centrada p {
+	max-width: 1000px;
 }
 
-body.modo-slides .slide {
-  position: absolute;
-  inset: 0;
-  padding: 0px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 24px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
-  overflow-y: auto;
+.animated-chart {
+	padding: 12px;
+	background: rgba(255, 255, 255, 0.99);
+	border-radius: 12px;
+	position: relative;
 }
 
-body.modo-slides .slide.activa {
-  opacity: 1;
-  visibility: visible;
+.animated-chart svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
 }
 
-body.modo-slides .slide.activa > * {
-  animation: subir 0.5s ease both;
+.animated-chart text {
+	font-family: Roboto, Arial, sans-serif;
+	fill: var(--navy);
 }
 
-@keyframes subir {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: none; }
+.animated-chart .axis {
+	stroke: #91a5ac;
+	stroke-width: 1.2;
 }
 
-body.modo-slides .slide.centrada {
-  align-items: center;
-  text-align: center;
+.animated-chart .gridline {
+	stroke: #cbd7d9;
+	stroke-width: 1;
+	stroke-dasharray: 4 4;
 }
 
-body.modo-slides .slide.centrada .etiqueta { align-self: center; }
-body.modo-slides .slide.centrada p { margin: 0 auto; }
+.animated-chart .axis-label {
+	font-size: 12px;
+	font-weight: 700;
+}
 
-/* Controles inferiores */
+.animated-chart .tick {
+	font-size: 11px;
+}
+
+.animated-chart .point-label {
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.animated-chart .anim-path {
+	stroke-dasharray: var(--length);
+	stroke-dashoffset: var(--length);
+}
+
+.slide.activa .animated-chart.is-running .anim-path {
+	animation: draw-path 2.5s ease-in-out forwards;
+}
+
+@keyframes draw-path {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+.animated-chart .anim-dot,
+.animated-chart .anim-value {
+	opacity: 0;
+}
+
+.slide.activa .animated-chart.is-running .anim-dot,
+.slide.activa .animated-chart.is-running .anim-value {
+	animation: fade-dots 0.22s ease-out var(--time) forwards;
+}
+
+@keyframes fade-dots {
+	to {
+		opacity: 1;
+	}
+}
+
+.animated-chart .rise-bar {
+	transform: scaleY(0);
+	transform-origin: center bottom;
+}
+
+.animated-chart .grow-horizontal {
+	transform: scaleX(0);
+	transform-origin: left center;
+}
+
+.slide.activa .animated-chart.is-running .rise-bar {
+	animation: rise-bar 0.65s cubic-bezier(0.17, 0.72, 0.22, 1) var(--time)
+		forwards;
+}
+
+.slide.activa .animated-chart.is-running .grow-horizontal {
+	animation: grow-h 0.65s cubic-bezier(0.17, 0.72, 0.22, 1) var(--time) forwards;
+}
+
+@keyframes grow-h {
+	to {
+		transform: scaleX(1);
+	}
+}
+
+@keyframes rise-bar {
+	to {
+		transform: scaleY(1);
+	}
+}
+
+/* Controles de navegación y Botón Landing con HOVER avanzado */
+.barra {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 5px;
+	width: 12.5%;
+	background: linear-gradient(90deg, #19a4a4, #083d4a);
+	z-index: 20;
+	transition: width 0.5s;
+}
+
 .pie {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 90px 20px;
-  pointer-events: none;
+	position: fixed;
+	bottom: 14px;
+	left: 7%;
+	right: 7%;
+	z-index: 20;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+	padding: 8px 0;
 }
 
-.pie .controles { display: flex; gap: 10px; pointer-events: auto; }
-
-.pie button {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  cursor: pointer;
-  background: var(--superficie);
-  border: none;
-  font-size: 22px;
-  color: var(--titulo);
-  display: grid;
-  place-items: center;
-  transition: background 0.2s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+.contador {
+	font-size: 14px;
+	font-weight: 700;
+	color: #42536b;
 }
 
-.pie button:hover {
-  background: var(--naranja);
-  color: #FFFFFF;
+.controles {
+	display: flex;
+	gap: 12px;
 }
 
-.contador { font-size: 16px; font-weight: 600; color: var(--tenue); }
-.portada { padding-right: max(16px, 500px); }
+.controles button,
+.btn-modo {
+	border: 0;
+	border-radius: 100px;
+	background: rgba(255, 255, 255, 0.96);
+	padding: 10px 16px;
+	color: var(--navy);
+	box-shadow: 0 6px 20px rgba(8, 61, 74, 0.09);
+	cursor: pointer;
+	min-width: 44px;
+	min-height: 44px;
+	transition: all 0.25s var(--ease);
+}
 
-/* ══ 5. MODO LANDING PAGE (Scroll Continuo por Secciones) ══ */
+.controles button {
+	font-size: 23px;
+}
+
+/* Efecto HOVER en botones y flechas */
+.controles button:hover,
+.btn-modo:hover {
+	background: var(--navy);
+	color: #ffffff;
+	transform: translateY(-3px);
+	box-shadow: 0 10px 25px rgba(8, 61, 74, 0.2);
+}
+
+.btn-modo {
+	position: fixed;
+	z-index: 22;
+	top: 18px;
+	right: 24px;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+/* Modo landing page */
 body.modo-landing {
-  height: auto;
-  min-height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+	overflow: auto;
 }
 
 body.modo-landing .escenario {
-  position: static;
-  transform: none;
-  width: 100%;
-  height: auto;
-  display: block;
+	height: auto;
 }
 
 body.modo-landing .slide {
-  position: relative;
-  inset: auto;
-  width: 100%;
-  min-height: 100vh;
-  padding: 100px 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 32px;
-  opacity: 1;
-  visibility: visible;
-  border-bottom: 1px solid var(--borde);
-  background: var(--fondo);
-  box-shadow: none;
-  border-radius: 0;
+	position: relative;
+	opacity: 1;
+	transform: none;
+	pointer-events: auto;
+	min-height: 95vh;
+	height: auto;
+	overflow: visible;
 }
 
-body.modo-landing .slide:nth-child(even) { background-color: var(--superficie); }
-body.modo-landing .slide.centrada { align-items: center; text-align: center; }
-body.modo-landing .slide.centrada .etiqueta { align-self: center; }
-body.modo-landing .slide.centrada p { margin: 0 auto; }
-body.modo-landing .pie, body.modo-landing .barra { display: none; }
-body.modo-landing .paso { opacity: 1; transform: none; }
-
-/* Responsivo móvil */
-@media (max-width: 850px) {
-  body { overflow-y: auto; }
-  body.modo-slides { height: auto; min-height: 100vh; overflow-y: auto; }
-  body.modo-slides .escenario { position: static; transform: none; width: 100%; height: auto; display: block; }
-  body.modo-slides .slide { position: relative; inset: auto; opacity: 1; visibility: visible; padding: 56px 24px; min-height: auto; height: auto; gap: 24px; overflow: visible; }
-  .slide { position: relative; inset: auto; opacity: 1; visibility: visible; padding: 56px 24px; min-height: auto; gap: 24px; }
-  .fila, .dos, .fila.grafico-texto { grid-template-columns: 1fr; }
-  h1 { font-size: 42px; }
-  h2 { font-size: 34px; }
-  h3 { font-size: 21px; }
-  p { font-size: 18px; }
-  p.grande { font-size: 21px; }
-  .etiqueta { font-size: 14px; padding: 8px 14px; }
-  .tarjeta { padding: 22px; }
-  .tarjeta.tarjeta-metodologia { padding: 24px; }
-  .tarjeta.grafico-grande { padding: 14px; }
-  .portada { padding-right: 24px; }
-  .pie { padding: 0 24px 16px; }
+body.modo-landing .pie {
+	display: none;
 }
+
+body.modo-landing .item-metodo-animado {
+	opacity: 1 !important;
+	transform: none !important;
+	transition: none !important;
+}
+
+body.modo-landing .animated-chart .anim-path {
+	stroke-dashoffset: 0 !important;
+	transition: none !important;
+	animation: none !important;
+}
+
+body.modo-landing .animated-chart .anim-dot,
+body.modo-landing .animated-chart .anim-value {
+	opacity: 1 !important;
+	animation: none !important;
+}
+
+body.modo-landing .animated-chart .rise-bar {
+	transform: scaleY(1) !important;
+	animation: none !important;
+}
+
+body.modo-landing .animated-chart .grow-horizontal {
+	transform: scaleX(1) !important;
+	animation: none !important;
+}
+
+/* ===== Responsive: iPad y celular (apila en columna) ===== */
+@media (max-width: 1024px) {
+	/* El gráfico y el texto pasan de fila a columna */
+	.grafico-texto {
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.grafico-grande,
+	.texto-analisis {
+		flex: 0 0 auto;
+		width: 100%;
+		max-width: 100%;
+	}
+
+	/* Como ahora el contenido es más alto, la diapositiva permite scroll vertical */
+	.slide {
+		justify-content: flex-start;
+		overflow-y: auto;
+		overflow-x: hidden;
+		padding: 68px 28px 80px;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	/* Evita que el borde inferior quede pegado a los botones de navegación */
+	.slide::after {
+		content: "";
+		flex: 0 0 24px;
+	}
+
+	.pie {
+		left: 24px;
+		right: 24px;
+	}
+}
+
+/* Celular */
+@media (max-width: 600px) {
+	.slide {
+		padding: 64px 20px 80px;
+	}
+
+	.grafico-grande {
+		padding: 6px;
+	}
+
+	.btn-modo {
+		top: 12px;
+		right: 12px;
+		font-size: 12px;
+		padding: 8px 12px;
+	}
+
+	.item-metodo {
+		gap: 10px;
+	}
+
+	.num {
+		flex-basis: 34px;
+		font-size: 18px;
+	}
+}
+
+/* En modo landing no hace falta el scroll interno de cada slide */
+@media (max-width: 1024px) {
+	body.modo-landing .slide {
+		overflow: visible;
+		min-height: auto;
+		padding-top: 70px;
+		padding-bottom: 50px;
+	}
+
+	body.modo-landing .slide::after {
+		display: none;
+	}
+}
+
