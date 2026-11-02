@@ -215,6 +215,7 @@ function lines(holder, type) {
 			});
 			point.style.setProperty("--time", delay + "s");
 
+			// Cifras con negrita asegurada
 			const label = add(
 				svg,
 				"text",
@@ -223,6 +224,7 @@ function lines(holder, type) {
 					y: y + (annual ? 23 : seriesIndex === 1 ? 19 : -13),
 					"text-anchor": "middle",
 					class: "anim-value point-label",
+					"font-weight": "700"
 				},
 				T(set.arr[index]),
 			);
@@ -239,214 +241,95 @@ function lines(holder, type) {
 }
 
 function ageChart(holder) {
-	// Aumentamos el alto del viewBox de 540 a 620 para que las barras tengan más espacio vertical
-	const svg = add(holder, "svg", {
-		viewBox: "0 0 780 560",
-		preserveAspectRatio: "xMidYMid meet",
-	});
+			const svg = add(holder, "svg", { viewBox: "0 0 780 560", preserveAspectRatio: "xMidYMid meet" });
 
-	// Cambiamos el fondo/límite de referencia superior e inferior
-	const left = 74,
-		bottom = 490,
-		top = 60,
-		right = 750,
-		max = 3400; // Ajustamos el max para que las barras no se corten
+			const defs = add(svg, "defs");
 
-	for (let t = 0; t <= 4; t++) {
-		const value = t * 850; // Ajustamos la escala de las líneas de referencia
-		const y = bottom - (value / max) * (bottom - top);
-		add(svg, "line", { x1: left, x2: right, y1: y, y2: y, class: "gridline" });
-		add(
-			svg,
-			"text",
-			{ x: left - 9, y: y + 4, "text-anchor": "end", class: "tick" },
-			T(value),
-		);
-	}
+			/* 1. Degradado estándar (verde medio a claro para las barras generales) */
+			const gradAge = add(defs, "linearGradient", { id: "grad-bar-age", x1: "0%", y1: "100%", x2: "0%", y2: "0%" });
+			add(gradAge, "stop", { offset: "0%", "stop-color": "#0F766E" });
+			add(gradAge, "stop", { offset: "100%", "stop-color": "#2DD4BF" });
 
-	add(svg, "line", { x1: left, x2: left, y1: top, y2: bottom, class: "axis" });
-	add(svg, "line", {
-		x1: left,
-		x2: right,
-		y1: bottom,
-		y2: bottom,
-		class: "axis",
-	});
+			/* 2. Degradado destacado MÁS OSCURO (para las franjas de 15 a 39 años) */
+			const gradAgeHighlight = add(defs, "linearGradient", { id: "grad-bar-age-highlight", x1: "0%", y1: "100%", x2: "0%", y2: "0%" });
+			add(gradAgeHighlight, "stop", { offset: "0%", "stop-color": "#042F2C" });   /* Verde muy oscuro en la base */
+			add(gradAgeHighlight, "stop", { offset: "100%", "stop-color": "#0D9488" }); /* Verde tono sólido/profundo arriba */
 
-	// Bajamos un poco más la etiqueta de "FRANJA ETARIA" para que no pise los textos inclinados
-	add(
-		svg,
-		"text",
-		{
-			x: (left + right) / 2,
-			y: bottom + 65,
-			"text-anchor": "middle",
-			class: "axis-label",
-		},
-		"FRANJA ETARIA",
-	);
-	add(
-		svg,
-		"text",
-		{
-			x: 14,
-			y: (top + bottom) / 2,
-			transform: `rotate(-90 14 ${(top + bottom) / 2})`,
-			"text-anchor": "middle",
-			class: "axis-label",
-		},
-		"CANTIDAD DE VÍCTIMAS",
-	);
+			const left = 74, bottom = 490, top = 60, right = 750, max = 3400;
 
-	const step = (right - left) / DATA.ages.length;
-	DATA.ages.forEach(([name, value], index) => {
-		const height = (value / max) * (bottom - top);
-		const x = left + step * (index + 0.14);
+			for (let t = 0; t <= 4; t++) {
+				const value = t * 850;
+				const y = bottom - (value / max) * (bottom - top);
+				add(svg, "line", { x1: left, x2: right, y1: y, y2: y, class: "gridline" });
+				add(svg, "text", { x: left - 9, y: y + 4, "text-anchor": "end", class: "tick" }, T(value));
+			}
 
-		const bar = add(svg, "rect", {
-			x,
-			y: bottom - height,
-			width: step * 0.7,
-			height,
-			rx: 2,
-			fill: index % 2 ? "#159d9e" : "#19a4a4",
-			class: "rise-bar",
-		});
-		bar.style.setProperty("--time", index * 0.1 + "s");
+			add(svg, "line", { x1: left, x2: left, y1: top, y2: bottom, class: "axis" });
+			add(svg, "line", { x1: left, x2: right, y1: bottom, y2: bottom, class: "axis" });
 
-		const label = add(
-			svg,
-			"text",
-			{
-				x: x + step * 0.35,
-				y: bottom - height - 7,
-				"text-anchor": "middle",
-				class: "anim-value",
-				"font-size": 10,
-			},
-			T(value),
-		);
-		label.style.setProperty("--time", index * 0.1 + 0.55 + "s");
+			add(svg, "text", { x: (left + right) / 2, y: bottom + 65, "text-anchor": "middle", class: "axis-label" }, "FRANJA ETARIA");
+			add(svg, "text", { x: 14, y: (top + bottom) / 2, transform: `rotate(-90 14 ${(top + bottom) / 2})`, "text-anchor": "middle", class: "axis-label" }, "CANTIDAD DE VÍCTIMAS");
 
-		// Posición de los nombres de las franjas etarias abajo
-		add(
-			svg,
-			"text",
-			{
-				x: x + step * 0.35,
-				y: bottom + 16,
-				transform: `rotate(-45 ${x + step * 0.35} ${bottom + 16})`,
-				"text-anchor": "end",
-				class: "tick",
-				"font-size": 10,
-			},
-			name,
-		);
-	});
-}
+			const step = (right - left) / DATA.ages.length;
+			DATA.ages.forEach(([name, value], index) => {
+				const height = (value / max) * (bottom - top);
+				const x = left + step * (index + 0.14);
+
+				/* Evaluamos si la franja actual está entre 15 y 39 años para aplicar el degradado más oscuro */
+				const esDestacado = ["15–19", "20–24", "25–29", "30–34", "35–39"].includes(name);
+				const fillGradient = esDestacado ? "url(#grad-bar-age-highlight)" : "url(#grad-bar-age)";
+
+				const bar = add(svg, "rect", { x, y: bottom - height, width: step * 0.7, height, rx: 2, fill: fillGradient, class: "rise-bar" });
+				bar.style.setProperty("--time", index * 0.1 + "s");
+
+				const label = add(svg, "text", { x: x + step * 0.35, y: bottom - height - 7, "text-anchor": "middle", class: "anim-value point-label", "font-size": 10, "font-weight": "700" }, T(value));
+				label.style.setProperty("--time", index * 0.1 + 0.55 + "s");
+
+				add(svg, "text", { x: x + step * 0.35, y: bottom + 16, transform: `rotate(-45 ${x + step * 0.35} ${bottom + 16})`, "text-anchor": "end", class: "tick", "font-size": 10, "font-weight": esDestacado ? "700" : "400" }, name);
+			});
+		}
 
 function provincial(holder) {
-	const svg = add(holder, "svg", {
-		viewBox: "0 0 780 540",
-		preserveAspectRatio: "xMidYMid meet",
-	});
+			const svg = add(holder, "svg", { viewBox: "0 0 780 540", preserveAspectRatio: "xMidYMid meet" });
 
-	const values = [...DATA.prov].sort(
-		(a, b) => b.tasa_promedio - a.tasa_promedio,
-	);
-	const max = Math.max(...values.map((item) => item.tasa_promedio)) + 1.5;
+			const values = [...DATA.prov].sort((a, b) => b.tasa_promedio - a.tasa_promedio);
+			const max = Math.max(...values.map((item) => item.tasa_promedio)) + 1.5;
 
-	const top = 25;
-	const left = 115;
-	const right = 740;
-	const bottom = 485;
-	const step = (bottom - top) / values.length;
+			const top = 25, left = 115, right = 740, bottom = 485;
+			const step = (bottom - top) / values.length;
 
-	const defs = add(svg, "defs");
-	const gradient = add(defs, "linearGradient", {
-		id: "prov-green-gradient",
-		x1: "0%",
-		y1: "0%",
-		x2: "0%",
-		y2: "100%",
-	});
+			const defs = add(svg, "defs");
+			/* Gradiente sobrio: de Lila Oscuro/Púrpura Profundo a Rosa Suave */
+			const gradient = add(defs, "linearGradient", { id: "prov-lila-rosa-gradient", x1: "0%", y1: "0%", x2: "100%", y2: "0%" });
+			add(gradient, "stop", { offset: "0%", "stop-color": "#a47bc9" });   /* Base lila oscuro sobrio */
+			add(gradient, "stop", { offset: "50%", "stop-color": "#d576ce" });  /* Transición lila medio */
+			add(gradient, "stop", { offset: "100%", "stop-color": "#e3a4c3" }); /* Punta rosa */
 
-	add(gradient, "stop", { offset: "0%", "stop-color": "#083d4a" });
-	add(gradient, "stop", { offset: "50%", "stop-color": "#159d9e" });
-	add(gradient, "stop", { offset: "100%", "stop-color": "#4db6ac" });
+			for (let j = 0; j <= 5; j++) {
+				const value = (max * j) / 5;
+				const x = left + ((right - left) * value) / max;
+				add(svg, "line", { x1: x, x2: x, y1: top, y2: bottom, class: "gridline" });
+				add(svg, "text", { x, y: bottom + 16, "text-anchor": "middle", class: "tick" }, value.toFixed(1).replace(".", ",") + "%");
+			}
 
-	for (let j = 0; j <= 5; j++) {
-		const value = (max * j) / 5;
-		const x = left + ((right - left) * value) / max;
-		add(svg, "line", { x1: x, x2: x, y1: top, y2: bottom, class: "gridline" });
-		add(
-			svg,
-			"text",
-			{ x, y: bottom + 16, "text-anchor": "middle", class: "tick" },
-			value.toFixed(1).replace(".", ",") + "%",
-		);
-	}
+			values.forEach((row, index) => {
+				const y = top + index * step + 2;
+				const height = step * 0.78;
+				const width = ((right - left) * row.tasa_promedio) / max;
+				const delay = index * 0.03;
 
-	values.forEach((row, index) => {
-		const y = top + index * step + 2;
-		const height = step * 0.78;
-		const width = ((right - left) * row.tasa_promedio) / max;
-		const delay = index * 0.03;
+				add(svg, "text", { x: left - 8, y: y + height * 0.72, "text-anchor": "end", "font-size": 10, "font-weight": "700" }, row.provincia_nombre.toUpperCase());
 
-		add(
-			svg,
-			"text",
-			{
-				x: left - 8,
-				y: y + height * 0.72,
-				"text-anchor": "end",
-				"font-size": 10,
-				"font-weight": "700",
-			},
-			row.provincia_nombre.toUpperCase(),
-		);
+				const bar = add(svg, "rect", { x: left, y, width, height, rx: 3, fill: "url(#prov-lila-rosa-gradient)", class: "grow-horizontal" });
+				bar.style.setProperty("--time", delay + "s");
+				bar.style.transformOrigin = `${left}px ${y + height}px`;
 
-		const bar = add(svg, "rect", {
-			x: left,
-			y,
-			width,
-			height,
-			rx: 3,
-			fill: "url(#prov-green-gradient)",
-			class: "grow-horizontal",
-		});
+				const label = add(svg, "text", { x: left + width + 5, y: y + height * 0.75, "font-size": 10, "font-weight": "700", class: "anim-value point-label" }, row.tasa_promedio.toFixed(1).replace(".", ",") + "%");
+				label.style.setProperty("--time", delay + 0.3 + "s");
+			});
 
-		bar.style.setProperty("--time", delay + "s");
-		bar.style.transformOrigin = `${left}px ${y + height}px`;
-
-		const label = add(
-			svg,
-			"text",
-			{
-				x: left + width + 5,
-				y: y + height * 0.75,
-				"font-size": 10,
-				"font-weight": "700",
-				class: "anim-value",
-			},
-			row.tasa_promedio.toFixed(1).replace(".", ",") + "%",
-		);
-
-		label.style.setProperty("--time", delay + 0.3 + "s");
-	});
-
-	add(
-		svg,
-		"text",
-		{
-			x: (left + right) / 2,
-			y: 528,
-			"text-anchor": "middle",
-			class: "axis-label",
-		},
-		"PROMEDIO DE TASAS PUBLICADAS POR SNIC (POR 100.000 HABITANTES)",
-	);
-}
+			add(svg, "text", { x: (left + right) / 2, y: 528, "text-anchor": "middle", class: "axis-label" }, "PROMEDIO DE TASAS PUBLICADAS POR SNIC (POR 100.000 HABITANTES)");
+		}
 
 function renderCharts() {
 	document.querySelectorAll(".animated-chart").forEach((element) => {
@@ -515,4 +398,6 @@ btn.addEventListener("click", () => {
 
 renderCharts();
 show(0);
+
+
 
