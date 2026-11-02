@@ -1,9 +1,24 @@
 :root {
-	--navy: #083d4a;
-	--text: #4b6070;
-	--teal: #19a4a4;
-	--salvia: #159d9e;
-	--ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Colores Principales de Marca / Estructura */
+  --navy: #0F3A47;            /* Verde Petróleo profundo (Títulos, texto principal, botones primarios) */
+  --text: #4A636E;            /* Gris azulado medio (Párrafos y textos secundarios) */
+  --teal: #148A8A;            /* Verde Agua / Teal (Acentos principales y cifras) */
+  --salvia: #D16BA5;          /* Rosa Salvia / Maquillaje (Etiquetas y resaltados) */
+  
+  /* Fondos y Superficies */
+  --bg-main: #F7FAF9;         /* Fondo general ultra suave */
+  --bg-card: rgba(255, 255, 255, 0.96); /* Fondo de tarjetas */
+  --borde: #D8E5E5;           /* Bordes suaves */
+
+  /* Degradados para Gráficos */
+  --grad-bar-start: #0A323D;  /* Base oscura para barras */
+  --grad-bar-end: #20B2AA;    /* Cima clara para barras */
+
+  --grad-prov-start: #8C2D6B; /* Base rosada oscura */
+  --grad-prov-end: #F4A6D7;  /* Punta rosada clara */
+  
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -392,7 +407,6 @@ p {
 h1 {
 	font-size: clamp(36px, 3.5vw, 52px);
 	line-height: 1.12;
-	max-width: 1050px;
 }
 
 h2 {
@@ -417,15 +431,37 @@ strong {
 	font-weight: 700;
 }
 
+/* Animación del subrayado fluido en textos destacados (.hl) - Más lenta y suave */
 .hl {
-	box-shadow: inset 0 -0.15em rgba(25, 164, 164, 0.25);
+  background: none !important;
+  position: relative;
+  display: inline-block;
+  color: var(--navy);
+}
+
+.hl::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.1em;
+  width: 0%;
+  height: 45%;
+  background-color: rgba(236, 72, 153, 0.25); /* Color rosa suave */
+  z-index: -1;
+  border-radius: 4px;
+  /* CAMBIO: Aumentamos de 0.6s a 1.2s para que sea más lenta y pausada */
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+}
+
+.slide.activa .hl::after {
+  width: 100%;
 }
 
 .etiqueta {
 	align-self: flex-start;
-	background: var(--navy);
+	background: var(--salvia);
 	color: white;
-	border-radius: 99px;
+	border-radius: 200px;
 	font-size: 13px;
 	font-weight: 700;
 	padding: 10px 17px;
@@ -441,17 +477,18 @@ strong {
 	color: #596979;
 	font-size: 14px;
 	line-height: 1.7;
+	gap: 12px;
+	display: flex;
 }
 
 /* Estilo para los botones de las integrantes */
 .btn-integrante {
+	background: #ffffff;
 	color: var(--navy);
+box-shadow: inset 0 -0.15em rgba(231, 159, 229, 0.25);
 	text-decoration: none;
-	font-weight: 700;
 	padding: 3px 12px;
-	border-radius: 6px;
-	background: rgba(25, 164, 164, 0.08);
-	border: 1px solid rgba(25, 164, 164, 0.2);
+	border-radius: 99px;
 	transition: all 0.25s ease;
 	display: inline-block;
 	margin: 2px 0;
@@ -501,7 +538,7 @@ strong {
 }
 
 code {
-	background: #edf1f2;
+	background: #e3beda;
 	color: var(--navy);
 	border-radius: 4px;
 	padding: 2px 5px;
@@ -598,7 +635,7 @@ code {
 
 .animated-chart .point-label {
 	font-size: 12px;
-	font-weight: 700;
+	font-weight: 700 !important;
 }
 
 .animated-chart .anim-path {
@@ -609,6 +646,7 @@ code {
 .slide.activa .animated-chart.is-running .anim-path {
 	animation: draw-path 2.5s ease-in-out forwards;
 }
+
 
 @keyframes draw-path {
 	to {
@@ -648,7 +686,8 @@ code {
 }
 
 .slide.activa .animated-chart.is-running .grow-horizontal {
-	animation: grow-h 0.65s cubic-bezier(0.17, 0.72, 0.22, 1) var(--time) forwards;
+  /* Cambiamos 0.65s por 1.4s para que la barra tarde más en estirarse */
+  animation: grow-h 1.4s cubic-bezier(0.17, 0.72, 0.22, 1) var(--time) forwards;
 }
 
 @keyframes grow-h {
@@ -702,7 +741,7 @@ code {
 .controles button,
 .btn-modo {
 	border: 0;
-	border-radius: 100px;
+	border-radius: 200px;
 	background: rgba(255, 255, 255, 0.96);
 	padding: 10px 16px;
 	color: var(--navy);
@@ -862,4 +901,6 @@ body.modo-landing .animated-chart .grow-horizontal {
 		display: none;
 	}
 }
+
+
 
