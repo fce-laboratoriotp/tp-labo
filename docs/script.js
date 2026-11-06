@@ -328,7 +328,7 @@ function provincial(holder) {
 				label.style.setProperty("--time", delay + 0.3 + "s");
 			});
 
-			add(svg, "text", { x: (left + right) / 2, y: 528, "text-anchor": "middle", class: "axis-label" }, "PROMEDIO DE TASAS PUBLICADAS POR SNIC (POR 100.000 HABITANTES)");
+			add(svg, "text", { x: (left + right) / 2, y: 528, "text-anchor": "middle", class: "axis-label" }, "Tasa de victimas por cada 100.000 habitantes");
 		}
 
 function renderCharts() {
