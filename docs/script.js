@@ -328,7 +328,7 @@ function provincial(holder) {
 				label.style.setProperty("--time", delay + 0.3 + "s");
 			});
 
-			add(svg, "text", { x: (left + right) / 2, y: 528, "text-anchor": "middle", class: "axis-label" }, "Tasa de victimas por cada 100.000 habitantes");
+			add(svg, "text", { x: (left + right) / 2, y: 528, "text-anchor": "middle", class: "axis-label" }, "TASA DE VÍCTIMAS POR CADA 100.000 HABITANTES");
 		}
 
 function renderCharts() {
