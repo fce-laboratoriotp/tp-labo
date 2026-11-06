@@ -1166,37 +1166,32 @@
 			<!-- SLIDE 3: METODOLOGÍA Y PROCESAMIENTO -->
 			<section class="slide" data-seccion="Metodología">
 				<span class="etiqueta">Datos y Herramientas</span>
-				<h2 class="ancho">Procesamiento íntegro en Python y Colab</h2>
+				<h2 class="ancho">Procesamiento de datos y unificación</h2>
 				<div class="metodologia-sin-caja">
 					<div class="item-metodo item-metodo-animado" style="--i: 1">
 						<div class="num">01</div>
 						<div>
-							<h3>Fuentes Oficiales</h3>
+							<h3>Carga de bases y limpieza</h3>
 							<p>
-								Cruce riguroso entre <code>snic-provincias.csv</code> y la base
-								de microdatos individuales (2020-2024) mediante
-								<code>pd.merge()</code>.
+								Carga de las bases de datos, filtrado exclusivo para centrarnos en los suicidios y auditoría de valores nulos (confirmando que correspondían a otros delitos).
 							</p>
 						</div>
 					</div>
 					<div class="item-metodo item-metodo-animado" style="--i: 2">
 						<div class="num">02</div>
 						<div>
-							<h3>Limpieza</h3>
+							<h3>Base máster</h3>
 							<p>
-								Auditoría de valores nulos, confirmando que las celdas vacías
-								correspondían a otros delitos, y estandarización categórica de
-								edades.
+								Cruce riguroso entre la base provincial y la base de microdatos individuales mediante <code>pd.merge()</code>.
 							</p>
 						</div>
 					</div>
 					<div class="item-metodo item-metodo-animado" style="--i: 3">
 						<div class="num">03</div>
 						<div>
-							<h3>Transformaciones y resumen estadístico</h3>
+							<h3>Resúmenes estadísticos</h3>
 							<p>
-								Agregaciones lógicas con <code>groupby()</code> para evaluar
-								evolución anual, distribución etaria y ratios de género.
+								Agrupaciones lógicas con <code>groupby()</code> para calcular la evolución anual y las diferencias por edad y sexo.
 							</p>
 						</div>
 					</div>
@@ -1205,8 +1200,7 @@
 						<div>
 							<h3>Visualización e interpretación</h3>
 							<p>
-								Gráficos comparativos y análisis de los resultados obtenidos,
-								considerando las limitaciones de los datos.
+								Generación de los gráficos comparativos y análisis de los resultados para la presentación de los hallazgos.
 							</p>
 						</div>
 					</div>
@@ -1291,7 +1285,7 @@
 			<!-- SLIDE 7: GRÁFICO 4 - RIESGO PROVINCIAL -->
 			<section class="slide" data-seccion="Gráfico 4: Provincias">
 				<span class="etiqueta">Gráfico IV</span>
-				<h2 class="ancho">Riesgo relativo por jurisdicción (Tasas)</h2>
+				<h2 class="ancho">Tasa promedio de suicidio por provincia (2020-2024)</h2>
 				<div class="grafico-texto">
 					<div class="tarjeta grafico-grande">
 						<div
@@ -1306,7 +1300,7 @@
 							Buenos Aires concentra el mayor volumen absoluto de casos
 							(>5.700), pero al ajustar por población su tasa es intermedia. En
 							contraste, provincias como
-							<strong>Entre Ríos, Catamarca, La Rioja y Salta</strong> presentan
+							<strong>Entre Ríos, San Luis, Salta y La Rioja </strong> presentan
 							las tasas más altas cada 100.000 habitantes.
 						</p>
 					</div>
